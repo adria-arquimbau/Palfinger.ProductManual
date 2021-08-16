@@ -5,11 +5,18 @@ namespace Palfinger.ProductManual.Infrastructure.Data
 {
     public class ProductManualDbContext : DbContext
     {
-        public ProductManualDbContext(DbContextOptions<ProductManualDbContext> contextOptions) : base(contextOptions)
+        public ProductManualDbContext(DbContextOptions<ProductManualDbContext> options) : base(options)
         {
+
         }
+
+        public DbSet<Product> Product { get; set; }
+    
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         
-        public const string DEFAULT_SCHEMA = "PM";
-        public DbSet<Product> Users { get; set; }
-    }   
+            modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());
+        }
+    }
 }
