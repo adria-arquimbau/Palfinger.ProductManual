@@ -4,12 +4,10 @@
     <projectFile>Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e22969e-031a-4061-b500-9b6293694be5" name="Default Changelist" comment="refact: deleted empty lines">
-      <change afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Manual.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ManualEntityTypeConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Product.cs" afterDir="false" />
+    <list default="true" id="7e22969e-031a-4061-b500-9b6293694be5" name="Default Changelist" comment="feat: manual migration">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Palfinger.ProductManual/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Palfinger.ProductManual/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Palfinger.ProductManual.Infrastructure.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Palfinger.ProductManual.Infrastructure.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductManualDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductManualDbContext.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +32,6 @@
       <option value="$PROJECT_DIR$/Palfinger.ProductManual.Api/Controllers/WeatherForecastController.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Program.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Controllers/WeatherForecastController.cs" />
-      <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Controllers/ManualsController.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Class1.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Class1.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductEntityTypeConfiguration.cs" />
@@ -44,6 +41,9 @@
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Product.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductEntityTypeConfiguration - Copy.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductManualDbContext.cs" />
+      <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ManualEntityTypeConfiguration.cs" />
+      <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ProductEntityTypeConfiguration.cs" />
+      <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Controllers/ManualsController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1woIO7ewfkUHsgaQRk4QoBIMMqn" />
@@ -108,7 +108,7 @@
       <updated>1629118480044</updated>
       <workItem from="1629118491646" duration="707000" />
       <workItem from="1629119319372" duration="1631000" />
-      <workItem from="1629142659361" duration="3708000" />
+      <workItem from="1629142659361" duration="5121000" />
     </task>
     <task id="LOCAL-00001" summary="refact: src folder">
       <created>1629120202904</created>
@@ -152,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629146095830</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: manual migration">
+      <created>1629146691370</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1629146691370</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +183,7 @@
     <MESSAGE value="refact: unused using" />
     <MESSAGE value="feat: DbContext configuration" />
     <MESSAGE value="refact: deleted empty lines" />
-    <option name="LAST_COMMIT_MESSAGE" value="refact: deleted empty lines" />
+    <MESSAGE value="feat: manual migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: manual migration" />
   </component>
 </project>
