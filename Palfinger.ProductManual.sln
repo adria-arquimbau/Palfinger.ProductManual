@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palfinger.ProductManual.Api", "Palfinger.ProductManual.Api\Palfinger.ProductManual.Api.csproj", "{9C7F9F31-0D5E-4FDC-8D65-64E7A4A5B6D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palfinger.ProductManual.Api", "src\Palfinger.ProductManual.Api\Palfinger.ProductManual.Api.csproj", "{9C7F9F31-0D5E-4FDC-8D65-64E7A4A5B6D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
