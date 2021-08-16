@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e22969e-031a-4061-b500-9b6293694be5" name="Default Changelist" comment="feat: DbContext configuration">
-      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Palfinger.ProductManual.Infrastructure.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Palfinger.ProductManual.Infrastructure.Data.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/ConfigFiles/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/ConfigFiles/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/appsettings.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +39,7 @@
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Product.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductEntityTypeConfiguration.cs" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductManualDbContext.cs" />
+      <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/ConfigFiles/appsettings.Development.json" />
       <option value="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Startup.cs" />
     </changedPaths>
   </component>
@@ -102,7 +105,7 @@
       <updated>1629118480044</updated>
       <workItem from="1629118491646" duration="707000" />
       <workItem from="1629119319372" duration="1631000" />
-      <workItem from="1629142659361" duration="2866000" />
+      <workItem from="1629142659361" duration="3181000" />
     </task>
     <task id="LOCAL-00001" summary="refact: src folder">
       <created>1629120202904</created>
@@ -125,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629145450743</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: DbContext configuration">
+      <created>1629145578887</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629145578887</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,5 +159,24 @@
     <MESSAGE value="refact: unused using" />
     <MESSAGE value="feat: DbContext configuration" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: DbContext configuration" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Startup.cs</url>
+          <line>30</line>
+          <properties documentPath="D:\DevelopmentProjects\Palfinger.ProductManual\src\Palfinger.ProductManual.Api\Startup.cs" initialLine="30" containingFunctionPresentation="method 'ConfigureServices'">
+            <startOffsets>
+              <option value="1057" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1229" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

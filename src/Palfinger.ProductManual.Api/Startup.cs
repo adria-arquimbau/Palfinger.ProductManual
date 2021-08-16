@@ -27,10 +27,9 @@ namespace Palfinger.ProductManual.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Palfinger.ProductManual.Api", Version = "v1"});
             });
-            const string path = "Data Source=C:\\sqlite\\sqlite-tools\\productManual.db;";
             services.AddDbContext<ProductManualDbContext>(options =>
             {
-                options.UseSqlite(path);
+                options.UseSqlite(Configuration.GetConnectionString("DBConnection"));
             }); 
             
         }
