@@ -10,6 +10,7 @@ namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
         {
             builder.HasKey(product => product.Id);
             builder.Property(product => product.Name);
+            builder.HasMany(product => product.Configurations);
         }
     }
 }

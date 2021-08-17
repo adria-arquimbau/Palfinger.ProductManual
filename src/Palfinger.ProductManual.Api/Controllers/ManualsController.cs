@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Palfinger.ProductManual.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ManualsController : ControllerBase
     {
         [HttpGet]

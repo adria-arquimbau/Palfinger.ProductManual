@@ -27,9 +27,11 @@ namespace Palfinger.ProductManual.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Palfinger.ProductManual.Api", Version = "v1"});
             });
+
             services.AddDbContext<ProductManualDbContext>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("DBConnection"));
+                options.UseSqlite(Configuration.GetConnectionString("DBConnection"), 
+                    b => b.MigrationsHistoryTable("__EFMigrationsHistory"));
             }); 
             
         }

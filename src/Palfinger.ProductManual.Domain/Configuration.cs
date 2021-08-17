@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 
 namespace Palfinger.ProductManual.Domain
 {
-    public class Product
+    public class Configuration
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public List<Configuration> Configurations { get; private set; }
     }
 }

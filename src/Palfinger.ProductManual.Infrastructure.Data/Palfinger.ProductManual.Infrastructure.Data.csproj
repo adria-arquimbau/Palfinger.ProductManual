@@ -12,4 +12,8 @@
       <ProjectReference Include="..\Palfinger.ProductManual.Domain\Palfinger.ProductManual.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Migrations" />
+    </ItemGroup>
+
 </Project>

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Palfinger.ProductManual.Domain;
@@ -10,7 +11,7 @@ namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
         {
             builder.HasKey(manual => manual.Id);
             builder.Property(manual => manual.Name);
-            builder.HasMany(manual => manual.Products);
+            builder.HasMany(manual => manual.ProductConfigurations);
         }
     }
-}
+}   
