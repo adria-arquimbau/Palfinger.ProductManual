@@ -9,7 +9,7 @@ using Palfinger.ProductManual.Infrastructure.Data;
 namespace Palfinger.ProductManual.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ProductManualDbContext))]
-    [Migration("20210818204740_firstMigration")]
+    [Migration("20210818205050_firstMigration")]
     partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

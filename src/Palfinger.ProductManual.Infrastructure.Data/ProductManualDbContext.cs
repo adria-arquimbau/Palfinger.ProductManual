@@ -17,8 +17,6 @@ namespace Palfinger.ProductManual.Infrastructure.Data
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-        
             modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new AttributeEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ConfigurationEntityTypeConfiguration());
