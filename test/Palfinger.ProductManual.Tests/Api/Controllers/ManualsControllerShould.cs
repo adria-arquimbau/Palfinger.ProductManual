@@ -21,7 +21,11 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
         public ManualsControllerShould(CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
-            //Task.WaitAll(_factory.RespawnDbContext());
+            Task.WaitAll(_factory.ExecuteDbContextAsync(async context =>
+            {
+                await context.Database.EnsureDeletedAsync();
+                await context.Database.EnsureCreatedAsync();
+            }));
         }
         
         private HttpClient CreateClient(IServiceCollection mockedServices)
@@ -61,10 +65,15 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
             "Then we get an ok response"
                 .x(() => response.StatusCode.Should().Be(HttpStatusCode.OK));
             
-            Manual manualResponse = null; 
+            Product manualResponse = null; 
+            
             await _factory.ExecuteDbContextAsync(async context =>
             {
-                manualResponse = await context.Manual.FirstOrDefaultAsync();
+                //await context.Manual.AddAsync(new Product("Name"));
+                await context.SaveChangesAsync();
+
+                manualResponse = await context.Product.FirstOrDefaultAsync();
+
             });
 
             manualResponse.Should().BeEquivalentTo(manualResponse);

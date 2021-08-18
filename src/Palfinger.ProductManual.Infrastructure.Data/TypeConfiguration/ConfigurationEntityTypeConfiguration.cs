@@ -12,4 +12,4 @@ namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
             builder.Property(productConfiguration => productConfiguration.Name);
         }
     }
-}
+}   

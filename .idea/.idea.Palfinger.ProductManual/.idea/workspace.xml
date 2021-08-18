@@ -4,10 +4,24 @@
     <projectFile>Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e22969e-031a-4061-b500-9b6293694be5" name="Default Changelist" comment="feat: manual migration">
+    <list default="true" id="7e22969e-031a-4061-b500-9b6293694be5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Attributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/AttributeEntityTypeConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Palfinger.ProductManual/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Palfinger.ProductManual/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Palfinger.ProductManual.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Palfinger.ProductManual.Infrastructure.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Palfinger.ProductManual.Infrastructure.Data.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Api/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Manual.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/MtoM/ProductConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Domain/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Migrations/20210817201654_firstMigration.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Migrations/20210817201654_firstMigration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/Migrations/ProductManualDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductManualDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/ProductManualDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ConfigurationEntityTypeConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ConfigurationEntityTypeConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ManualEntityTypeConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ProductConfigurationEntityTypeConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ProductEntityTypeConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Palfinger.ProductManual.Infrastructure.Data/TypeConfiguration/ProductEntityTypeConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Palfinger.ProductManual.Tests/Api/Controllers/ManualsControllerShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Palfinger.ProductManual.Tests/Api/Controllers/ManualsControllerShould.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Palfinger.ProductManual.Tests/CustomWebApplicationFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Palfinger.ProductManual.Tests/CustomWebApplicationFactory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +37,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2DB4A2AF-EA8F-4C8D-B2DC-DBD26266917F/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29E98B2B-3C94-42C3-963D-84D47221DC44/9/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ea47468fd1a8438bb9228106679184499c200/C8/XUnit2TestFramework.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/29E98B2B-3C94-42C3-963D-84D47221DC44/39/0437265a/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29E98B2B-3C94-42C3-963D-84D47221DC44/9/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bb42fd38bd8407b9667fbf8ce1367e98f5388/E2/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2DB4A2AF-EA8F-4C8D-B2DC-DBD26266917F/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -109,6 +125,8 @@
       <workItem from="1629118491646" duration="707000" />
       <workItem from="1629119319372" duration="1631000" />
       <workItem from="1629142659361" duration="5121000" />
+      <workItem from="1629293375929" duration="601000" />
+      <workItem from="1629306171699" duration="4595000" />
     </task>
     <task id="LOCAL-00001" summary="refact: src folder">
       <created>1629120202904</created>
@@ -159,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629146691370</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="test: first test">
+      <created>1629232268654</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629232268654</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +209,7 @@
     <MESSAGE value="feat: DbContext configuration" />
     <MESSAGE value="refact: deleted empty lines" />
     <MESSAGE value="feat: manual migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: manual migration" />
+    <MESSAGE value="test: first test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: first test" />
   </component>
 </project>

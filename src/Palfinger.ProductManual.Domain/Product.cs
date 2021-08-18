@@ -7,6 +7,6 @@ namespace Palfinger.ProductManual.Domain
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public List<Configuration> Configurations { get; private set; }
+        public List<Attribute> Attributes { get; private set; }
     }
-}
+}       

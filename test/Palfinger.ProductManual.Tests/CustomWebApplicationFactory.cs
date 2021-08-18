@@ -62,8 +62,6 @@ namespace Palfinger.ProductManual.Tests
             });
         }
 
-
-
         private static void CheckDatabaseIsForUnitTesting()
         {
             var currentDirectory = Directory.GetCurrentDirectory();

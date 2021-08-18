@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +28,7 @@ namespace Palfinger.ProductManual.Api
             });
 
             services.AddDbContext<ProductManualDbContext>(options =>
-            {
+            {//TODO test sin migration hsitory table si crea tabla migraciones igual
                 options.UseSqlite(Configuration.GetConnectionString("DBConnection"), 
                     b => b.MigrationsHistoryTable("__EFMigrationsHistory"));
             }); 

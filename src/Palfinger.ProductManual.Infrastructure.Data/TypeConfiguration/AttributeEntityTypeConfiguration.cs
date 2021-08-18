@@ -4,13 +4,13 @@ using Palfinger.ProductManual.Domain;
 
 namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
 {
-    public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
+    public class AttributeEntityTypeConfiguration: IEntityTypeConfiguration<Attribute>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<Attribute> builder)
         {
             builder.HasKey(product => product.Id);
             builder.Property(product => product.Name);
-            builder.HasMany(product => product.Attributes);
+            builder.HasMany(product => product.Configurations);
         }
     }
 }
