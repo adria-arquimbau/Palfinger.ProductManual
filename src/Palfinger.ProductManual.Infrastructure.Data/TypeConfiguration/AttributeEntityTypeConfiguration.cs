@@ -8,9 +8,9 @@ namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
     {
         public void Configure(EntityTypeBuilder<Attribute> builder)
         {
-            builder.HasKey(product => product.Id);
-            builder.Property(product => product.Name);
-            builder.HasMany(product => product.Configurations);
+            builder.HasKey(attribute => attribute.Id);
+            builder.Property(attribute => attribute.Name);
+            builder.HasMany(attribute => attribute.Configurations);
         }
     }
 }

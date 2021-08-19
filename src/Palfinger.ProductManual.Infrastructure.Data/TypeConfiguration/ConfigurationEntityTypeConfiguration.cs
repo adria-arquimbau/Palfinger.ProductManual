@@ -8,8 +8,8 @@ namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
     {   
         public void Configure(EntityTypeBuilder<Configuration> builder)
         {
-            builder.HasKey(productConfiguration => productConfiguration.Id);
-            builder.Property(productConfiguration => productConfiguration.Name);
+            builder.HasKey(configuration => configuration.Id);
+            builder.Property(configuration => configuration.Name);
         }
     }
 }   

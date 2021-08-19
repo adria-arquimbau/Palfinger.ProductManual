@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Palfinger.ProductManual.Api;
 using Palfinger.ProductManual.Domain;
+using Palfinger.ProductManual.Tests.Api.SeedData;
 using Xbehave;
 using Xunit;
 
@@ -17,6 +18,7 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
     public class ManualsControllerShould : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly CustomWebApplicationFactory<Startup> _factory;
+        private HttpResponseMessage _clientResponse;
 
         public ManualsControllerShould(CustomWebApplicationFactory<Startup> factory)
         {
@@ -26,7 +28,8 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                 await context.Database.EnsureDeletedAsync();
                 await context.Database.EnsureCreatedAsync();
             }));
-        }
+            _clientResponse = new HttpResponseMessage(HttpStatusCode.NotImplemented);
+        }   
         
         private HttpClient CreateClient(IServiceCollection mockedServices)
         {
@@ -47,6 +50,32 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
 
             return client;
         }
+        
+        [Scenario]
+        public void asdad()
+        {
+            var services = new ServiceCollection();
+            var client = CreateClient(services);
+
+            "Given we have a Bike manual"
+                .x(async () =>
+                {
+                    await _factory.ExecuteDbContextAsync(async context =>
+                    {
+                        await context.Database.ExecuteSqlRawAsync(BikeManual.Script());
+                        await context.SaveChangesAsync();
+                    });
+                });
+            
+            "When called the method"
+                .x(async () =>
+                {
+                    _clientResponse = await client.GetAsync($"api/manuals");
+                });
+
+            "Then we get an ok response"
+                .x(() => _clientResponse.StatusCode.Should().Be(HttpStatusCode.OK));
+        }
 
         [Scenario]
         public async Task Test()
@@ -54,16 +83,14 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
             var services = new ServiceCollection();
             var client = CreateClient(services);
 
-            var response = new HttpResponseMessage(HttpStatusCode.NotImplemented);
-            
             "When called the method"
                 .x(async () =>
                 {
-                    response = await client.GetAsync($"api/manuals");
+                    _clientResponse = await client.GetAsync($"api/manuals");
                 });
 
             "Then we get an ok response"
-                .x(() => response.StatusCode.Should().Be(HttpStatusCode.OK));
+                .x(() => _clientResponse.StatusCode.Should().Be(HttpStatusCode.OK));
             
             Product manualResponse = null; 
             
@@ -78,5 +105,5 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
 
             manualResponse.Should().BeEquivalentTo(manualResponse);
         }
-    }   
+    }
 }           
