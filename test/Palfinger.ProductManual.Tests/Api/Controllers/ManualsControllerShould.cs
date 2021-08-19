@@ -66,7 +66,7 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                         await context.SaveChangesAsync();
                     });
                 });
-            
+
             "When called the method"
                 .x(async () =>
                 {
