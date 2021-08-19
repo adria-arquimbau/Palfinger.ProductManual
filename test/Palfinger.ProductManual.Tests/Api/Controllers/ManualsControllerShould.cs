@@ -66,11 +66,12 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                         await context.SaveChangesAsync();
                     });
                 });
-
+            
+            
             "When called the method"
                 .x(async () =>
                 {
-                    _clientResponse = await client.GetAsync($"api/manuals");
+                    _clientResponse = await client.GetAsync($"api/manuals/search?productNumber=1&page=1");
                 });
 
             "Then we get an ok response"
@@ -78,7 +79,7 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
         }
 
         [Scenario]
-        public async Task Test()
+        public async Task TestBorrar()
         {
             var services = new ServiceCollection();
             var client = CreateClient(services);
