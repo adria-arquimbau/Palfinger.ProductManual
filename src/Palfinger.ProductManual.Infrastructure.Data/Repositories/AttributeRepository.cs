@@ -12,12 +12,12 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
         {
         }
 
-        public PagedList<Attribute> GetAttributesPaging(AttributesFromProductFilterRequest attributesFromProductFilterRequest)
+        public PagedList<Attribute> GetAttributesPaging(ManualByProductIdFilterRequest manualByProductIdFilterRequest)
         {   
             return PagedList<Attribute>.ToPagedList(FindALl()
-                    .Where(attribute => attribute.Product.Id == attributesFromProductFilterRequest.ProductId)
+                    .Where(attribute => attribute.Product.Id == manualByProductIdFilterRequest.ProductId)
                     .OrderBy(attribute => attribute.Name)
-                    .Include(attribute => attribute.Configurations), attributesFromProductFilterRequest.PageNumber, attributesFromProductFilterRequest.PageSize);
+                    .Include(attribute => attribute.Configurations), manualByProductIdFilterRequest.PageNumber, manualByProductIdFilterRequest.PageSize);
         }
     }
 }   

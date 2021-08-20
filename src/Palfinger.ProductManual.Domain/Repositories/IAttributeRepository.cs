@@ -4,6 +4,6 @@ namespace Palfinger.ProductManual.Domain.Repositories
 {
     public interface IAttributeRepository : IRepositoryBase<Attribute>
     {
-        PagedList<Attribute> GetAttributesPaging(AttributesFromProductFilterRequest attributesFromProductFilterRequest);
+        PagedList<Attribute> GetAttributesPaging(ManualByProductIdFilterRequest manualByProductIdFilterRequest);
     }
 }           

@@ -16,7 +16,7 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
         }
 
         public IQueryable<T> FindALl()
-        {   
+        {
             return _context.Set<T>().AsNoTracking();
         }
 
@@ -37,6 +37,7 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
 
         public void Delete(T entity)
         {
-            _context.Set<T>().Remove(entity);        }
+            _context.Set<T>().Remove(entity);
+        }
     }
 }

@@ -25,7 +25,11 @@
 
     <ItemGroup>
       <None Remove="Api\SeedData\BikeManualSeedData.sql" />
-      <EmbeddedResource Include="Api\SeedData\BikeManualSeedData.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Api\SeedData\ProductSeedData.sql" />
+      <EmbeddedResource Include="Api\SeedData\ProductSeedData.sql" />
     </ItemGroup>
 
 </Project>

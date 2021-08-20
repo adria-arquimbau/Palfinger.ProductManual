@@ -4,6 +4,6 @@ namespace Palfinger.ProductManual.Tests.Api.SeedData
 {
     public class BikeManual
     {
-        public static string Script() => AssemblyExtensions.GetManifestResourceAsString("Palfinger.ProductManual.Tests.Api.SeedData.BikeManualSeedData.sql");
+        public static string Script() => AssemblyExtensions.GetManifestResourceAsString("Palfinger.ProductManual.Tests.Api.SeedData.ProductSeedData.sql");
     }
 }
