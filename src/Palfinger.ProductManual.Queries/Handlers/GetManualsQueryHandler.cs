@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace Palfinger.ProductManual.Domain.Queries
+namespace Palfinger.ProductManual.Queries.Handlers
 {
     public class GetManualsQueryHandler : IRequestHandler<GetManualsQueryRequest, GetManualsQueryResponse>
     {

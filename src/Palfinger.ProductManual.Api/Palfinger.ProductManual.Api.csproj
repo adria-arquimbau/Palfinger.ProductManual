@@ -12,11 +12,13 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.9" />
+        <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Palfinger.ProductManual.Infrastructure.Data\Palfinger.ProductManual.Infrastructure.Data.csproj" />
+      <ProjectReference Include="..\Palfinger.ProductManual.Queries\Palfinger.ProductManual.Queries.csproj" />
     </ItemGroup>
 
 </Project>

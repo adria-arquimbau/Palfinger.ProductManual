@@ -1,9 +1,10 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Palfinger.ProductManual.Api.Models;
+using Newtonsoft.Json;
 using Palfinger.ProductManual.Api.Models.Manual;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Repositories;
@@ -27,9 +28,9 @@ namespace Palfinger.ProductManual.Api.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> GetTest()
         {
-            var products = _repositoryWrapper.ProductRepository.FindByCondition(x => x.Name == "Name");
+            var products = _repositoryWrapper.AttributeRepository.FindByCondition(x => x.Name == "Name");
             
-            var products2 = _repositoryWrapper.ProductRepository.FindALl();
+            var products2 = _repositoryWrapper.AttributeRepository.FindALl();
 
             return Ok();
         }   
@@ -37,11 +38,22 @@ namespace Palfinger.ProductManual.Api.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ManualResponse),(int)HttpStatusCode.OK)]
         [Produces("application/json")]
-        public async Task<IActionResult> GetManual([FromQuery] ManualFilterRequest manualFilterRequest)
+        public async Task<IActionResult> GetManual([FromQuery] AttributesFromProductFilterRequest attributesFromProductFilterRequest)
         {
-            var manual = _repositoryWrapper.ProductRepository.GetProductPaging(manualFilterRequest);
+            var manual = _repositoryWrapper.AttributeRepository.GetAttributesPaging(attributesFromProductFilterRequest);
 
-            return Ok();
+            var metadata = new
+            {
+                manual.TotalCount,
+                manual.PageSize,
+                manual.CurrentPage,
+                manual.HasNext,
+                manual.HasPrevious
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            
+            return Ok(manual);
         }   
     }
 }   

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Palfinger.ProductManual.Infrastructure.Data;
 
 namespace Palfinger.ProductManual.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ProductManualDbContext))]
-    partial class ProductManualDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210820134452_fatherPrameter")]
+    partial class fatherPrameter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,11 +81,9 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Palfinger.ProductManual.Domain.Configuration", b =>
                 {
-                    b.HasOne("Palfinger.ProductManual.Domain.Attribute", "Attribute")
+                    b.HasOne("Palfinger.ProductManual.Domain.Attribute", null)
                         .WithMany("Configurations")
                         .HasForeignKey("AttributeId");
-
-                    b.Navigation("Attribute");
                 });
 
             modelBuilder.Entity("Palfinger.ProductManual.Domain.Attribute", b =>

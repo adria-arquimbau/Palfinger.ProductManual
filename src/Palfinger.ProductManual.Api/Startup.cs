@@ -7,10 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Palfinger.ProductManual.Domain.Queries;
 using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Infrastructure.Data;
 using Palfinger.ProductManual.Infrastructure.Data.Repositories;
+using Palfinger.ProductManual.Queries.Handlers;
 
 namespace Palfinger.ProductManual.Api
 {

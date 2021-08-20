@@ -5,18 +5,18 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private ProductManualDbContext _context;
-        private IProductRepository _productRepository;
+        private IAttributeRepository _attributeRepository;
 
-        public IProductRepository ProductRepository
+        public IAttributeRepository AttributeRepository
         {
             get
             {
-                if (_productRepository == null)
+                if (_attributeRepository == null)
                 {
-                    _productRepository = new ProductRepository(_context);
+                    _attributeRepository = new AttributeRepository(_context);
                 }
 
-                return _productRepository;
+                return _attributeRepository;
             }
         }
 

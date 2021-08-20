@@ -2,7 +2,7 @@ namespace Palfinger.ProductManual.Domain.Repositories
 {
     public interface IRepositoryWrapper
     {
-        IProductRepository ProductRepository { get;  }
+        IAttributeRepository AttributeRepository { get;  }
         void Save();
     }
 }

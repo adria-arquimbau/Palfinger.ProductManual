@@ -6,6 +6,7 @@ namespace Palfinger.ProductManual.Domain
     {
         public int Id { get; private set; } 
         public string Name { get; private set; }
+        public Product Product { get; private set; }
         public List<Configuration> Configurations { get; private set; }
     }
-}           
+}               
