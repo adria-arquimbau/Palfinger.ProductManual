@@ -18,9 +18,11 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
         public IEnumerable<Product> GetProducts(ManualFilterRequest manualFilterRequest)
         {
             return FindALl()
-                .OrderBy(product => product.Name)
-                .Skip((manualFilterRequest.PageNumber - 1) * manualFilterRequest.PageSize)
-                .Take(manualFilterRequest.PageSize)
+                .Where(product => product.Id == manualFilterRequest.ProductId)
+                .Include(product => product.Attributes
+                    .OrderBy(attribute => attribute.Name)
+                    .Skip((manualFilterRequest.PageNumber - 1) * manualFilterRequest.PageSize)
+                    .Take(manualFilterRequest.PageSize))
                 .ToList();
         }
     }

@@ -2,6 +2,7 @@ namespace Palfinger.ProductManual.Domain
 {
     public class ManualFilterRequest
     {
+        public int ProductId { get; set; }
         private const int MaxPageSize = 50;
         public int PageNumber { get; set; } = 1;
         private int _pageSize = 10;

@@ -41,11 +41,7 @@ namespace Palfinger.ProductManual.Api.Controllers
         {
             var manual = _repositoryWrapper.ProductRepository.GetProducts(manualFilterRequest);
 
-            return Ok(manual.Select(m => new ManualResponse
-            {
-                Id = m.Id,
-                Name = m.Name
-            }));
+            return Ok();
         }   
     }
 }   
