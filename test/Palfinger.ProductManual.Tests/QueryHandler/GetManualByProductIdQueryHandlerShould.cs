@@ -94,9 +94,9 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                     }
                 }
             };
-            response.ManualByProductIdPagingResponse.Attributes.Should().BeEquivalentTo(expectedResponse.ManualByProductIdPagingResponse.Attributes, config =>
-                    config.Excluding(x => x.Id));
-            //TODO Excluding IDs de tot
+            
+            response.Should().BeEquivalentTo(expectedResponse, config => config
+                .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
         }
     }
 }
