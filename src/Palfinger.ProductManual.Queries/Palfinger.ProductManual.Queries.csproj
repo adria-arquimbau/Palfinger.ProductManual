@@ -9,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models" />
+      <ProjectReference Include="..\Palfinger.ProductManual.Infrastructure.Data\Palfinger.ProductManual.Infrastructure.Data.csproj" />
     </ItemGroup>
 
 </Project>

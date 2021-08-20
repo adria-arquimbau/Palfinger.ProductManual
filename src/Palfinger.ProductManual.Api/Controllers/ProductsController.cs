@@ -1,10 +1,12 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Queries.Handlers;
+using Palfinger.ProductManual.Queries.Models;
 
 namespace Palfinger.ProductManual.Api.Controllers
 {
@@ -21,26 +23,13 @@ namespace Palfinger.ProductManual.Api.Controllers
         }
         
         [HttpGet]
-        [ProducesResponseType(typeof(ManualByProductIdFilterRequest),(int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ManualByProductIdPagingResponse),(int)HttpStatusCode.OK)]
         [Produces("application/json")]
-        public async Task<IActionResult> GetManualByProductId([FromQuery] ManualByProductIdFilterRequest request)
+        public async Task<ActionResult> GetManualByProductId([FromQuery] int productId, [FromQuery] int pageNumber, [FromQuery] int pageSize)
         {
-            var response = await _mediator.Send(new GetManualByProductIdQueryRequest(request.ProductId, request.PageNumber, request.PageSize));
-            
-            // var manual = _repositoryWrapper.AttributeRepository.GetAttributesPaging(request);
-            //
-            // var metadata = new
-            // {
-            //     manual.TotalCount,
-            //     manual.PageSize,
-            //     manual.CurrentPage,
-            //     manual.HasNext, 
-            //     manual.HasPrevious
-            // };
-            //
-            // Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
-            
-            return Ok();
+            var response = await _mediator.Send(new GetManualByProductIdQueryRequest(productId, pageNumber, pageSize));
+
+            return Ok(response.ManualByProductIdPagingResponse);
         }   
     }
 }   

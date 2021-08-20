@@ -26,7 +26,7 @@ namespace Palfinger.ProductManual.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetManualsQueryHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(GetManualByProductIdQueryHandler).GetTypeInfo().Assembly);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
