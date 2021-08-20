@@ -5,6 +5,6 @@ namespace Palfinger.ProductManual.Domain.Repositories
 {
     public interface IProductRepository : IRepositoryBase<Product>
     {
-        IEnumerable<Product> GetProducts(ManualFilterRequest manualFilterRequest);
+        IEnumerable<Product> GetProductPaging(ManualFilterRequest manualFilterRequest);
     }
 }   

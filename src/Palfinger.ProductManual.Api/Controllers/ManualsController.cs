@@ -39,7 +39,7 @@ namespace Palfinger.ProductManual.Api.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> GetManual([FromQuery] ManualFilterRequest manualFilterRequest)
         {
-            var manual = _repositoryWrapper.ProductRepository.GetProducts(manualFilterRequest);
+            var manual = _repositoryWrapper.ProductRepository.GetProductPaging(manualFilterRequest);
 
             return Ok();
         }   

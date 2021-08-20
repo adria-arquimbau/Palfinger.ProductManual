@@ -15,7 +15,7 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<Product> GetProducts(ManualFilterRequest manualFilterRequest)
+        public IEnumerable<Product> GetProductPaging(ManualFilterRequest manualFilterRequest)
         {
             return FindALl()
                 .Where(product => product.Id == manualFilterRequest.ProductId)
