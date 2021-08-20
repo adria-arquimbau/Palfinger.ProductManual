@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Palfinger.ProductManual.Domain.Repositories;
 
@@ -25,12 +26,12 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
             return _context.Set<T>().Where(expression).AsNoTracking();
         }
 
-        public void Create(T entity)
+        public async Task Create(T entity)
         {
-            _context.Set<T>().Add(entity);
+            await _context.Set<T>().AddAsync(entity);
         }
 
-        public void Update(T entity)
+        public void Update(T entity)    
         {
             _context.Set<T>().Update(entity);
         }

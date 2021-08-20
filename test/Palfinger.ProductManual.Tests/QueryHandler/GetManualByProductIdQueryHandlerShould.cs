@@ -1,17 +1,13 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
 using NSubstitute;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Helpers;
 using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Queries.Handlers;
 using Palfinger.ProductManual.Queries.Models;
-using Palfinger.ProductManual.Tests.Api.SeedData;
-using Palfinger.ProductManual.Tests.Infrastructure;
 using Xunit;
 
 namespace Palfinger.ProductManual.Tests.QueryHandler
@@ -20,16 +16,11 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
     public class GetManualByProductIdQueryHandlerShould
     {
         private readonly GetManualByProductIdQueryHandler _handler;
-        private readonly TestContext _context;
         private readonly IRepositoryWrapper _repositoryWrapper;
 
         public GetManualByProductIdQueryHandlerShould()
         {
             _repositoryWrapper = Substitute.For<IRepositoryWrapper>();
-            _context = new TestContext();
-            Task.WaitAll(_context.TestDbContext().Database.EnsureDeletedAsync());
-            Task.WaitAll(_context.TestDbContext().Database.EnsureCreatedAsync());
-            Task.WaitAll(_context.TestDbContext().Database.ExecuteSqlRawAsync(ProductsManualSeedData.Script()));
             _handler = new GetManualByProductIdQueryHandler(_repositoryWrapper);
         }
 

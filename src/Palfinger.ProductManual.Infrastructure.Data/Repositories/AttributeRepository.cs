@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Helpers;
@@ -12,12 +13,12 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
         {
         }
 
-        public PagedList<Attribute> GetAttributesPaging(ManualByProductIdFilterRequest manualByProductIdFilterRequest)
+        public async Task<PagedList<Attribute>> GetAttributesPaging(ManualByProductIdFilterRequest manualByProductIdFilterRequest)
         {   
-            return PagedList<Attribute>.ToPagedList(FindALl()
+            return  PagedList<Attribute>.ToPagedList(FindALl()
                     .Where(attribute => attribute.Product.Id == manualByProductIdFilterRequest.ProductId)
                     .OrderBy(attribute => attribute.Name)
                     .Include(attribute => attribute.Configurations), manualByProductIdFilterRequest.PageNumber, manualByProductIdFilterRequest.PageSize);
         }
     }
-}   
+}       

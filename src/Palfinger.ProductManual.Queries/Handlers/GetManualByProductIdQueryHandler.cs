@@ -19,7 +19,7 @@ namespace Palfinger.ProductManual.Queries.Handlers
     
         public async Task<GetManualByProductIdQueryResponse> Handle(GetManualByProductIdQueryRequest request, CancellationToken cancellationToken)
         {
-            var response =  _repositoryWrapper.AttributeRepository.GetAttributesPaging(new ManualByProductIdFilterRequest
+            var response =  await _repositoryWrapper.AttributeRepository.GetAttributesPaging(new ManualByProductIdFilterRequest
             {
                 ProductId = request.RequestProductId,
                 PageNumber = request.RequestPageNumber,

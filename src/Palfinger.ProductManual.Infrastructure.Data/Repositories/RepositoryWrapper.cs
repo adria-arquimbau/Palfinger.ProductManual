@@ -1,10 +1,11 @@
+using System.Threading.Tasks;
 using Palfinger.ProductManual.Domain.Repositories;
 
 namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
-        private ProductManualDbContext _context;
+        private readonly ProductManualDbContext _context;
         private IAttributeRepository _attributeRepository;
 
         public IAttributeRepository AttributeRepository
@@ -25,9 +26,9 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
             _context = context;
         }
         
-        public void Save()
+        public async Task Save()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
-}
+}   
