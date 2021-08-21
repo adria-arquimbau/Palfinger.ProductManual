@@ -138,25 +138,27 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
             var client = CreateClient(services);
 
             const string productName = "ProductName1";
+            const string description = "Description";
+            const string imageUrl = "ImageUrl";
             var request = new
             {   
                 Name = productName,
-                Description = "Description",
-                ImageUrl = "ImageUrl",
+                Description = description,
+                ImageUrl = imageUrl,
                 Attributes = new List<object>
                 {
                     new
                     {   
                         Name = "AttributeName1", 
-                        Description = "Description",    
-                        ImageUrl = "ImageUrl",
+                        Description = description,    
+                        ImageUrl = imageUrl,
                         Configurations = new List<object>    
                         {       
                             new    
                             {       
                                 Name = "ConfigurationName1", 
-                                Description = "Description",
-                                ImageUrl = "ImageUrl",  
+                                Description = description,
+                                ImageUrl = imageUrl,  
                             }   
                         }   
                     }
@@ -185,10 +187,16 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                 });
 
             var expected = new Product(productName, "Description", "ImageUrl");
+            var attribute = new Attribute("AttributeName1", description, imageUrl); 
+            attribute.SetConfigurations(new List<Configuration>{ new Configuration("ConfigurationName1", description, imageUrl)});
+            expected.SetAttributes(new List<Attribute> { attribute });
             "Then we match the information"
                 .x(() =>
                 {
-                    result.Should().Be(expected);
+                    result.Should().BeEquivalentTo(expected, config =>
+                        config.Excluding(x => x.SelectedMemberPath.EndsWith("Id"))
+                            .Excluding(x => x.SelectedMemberPath.EndsWith("Product"))
+                            .Excluding(x => x.SelectedMemberPath.EndsWith("Attribute")));
                 });
         }
     }

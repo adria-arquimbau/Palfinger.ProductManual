@@ -36,6 +36,7 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
             product.SetAttributes(attributes);
 
             await _repositoryWrapper.ProductRepository.Create(product);
+            await _repositoryWrapper.Save();
         }
     }
 }   

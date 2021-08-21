@@ -24,14 +24,15 @@ namespace Palfinger.ProductManual.Domain.Tests
         }
 
         [Theory, AutoData]
-        public void CreateAProductWithoutAttributes(string name, string description, string imageUrl)
+        public async Task CreateAProductWithoutAttributes(string name, string description, string imageUrl)
         {
             var request = new CreateProductCommandRequest(name, description, imageUrl, new List<CreateAttributeRequest>());
             
-            _handler.Handle(request, CancellationToken.None);
+            await _handler.Handle(request, CancellationToken.None);
 
             var product = new Product(name, description, imageUrl);
-            _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, product)));
+            await _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, product)));
+            await _repositoryWrapper.Received(1).Save();
         }
         
         [Theory, AutoData]
@@ -63,6 +64,7 @@ namespace Palfinger.ProductManual.Domain.Tests
                 attribute
             });
             await _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, product)));
+            await _repositoryWrapper.Received(1).Save();
         }
         
         private bool IsEquivalentTo(object request, object expectedRequest)
