@@ -10,6 +10,9 @@ namespace Palfinger.ProductManual.Queries.Models
         public int CurrentPage { get; set; }
         public bool HasNext { get; set; }
         public bool HasPrevious { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public List<AttributeResponse> Attributes { get; set; }
     }
 }

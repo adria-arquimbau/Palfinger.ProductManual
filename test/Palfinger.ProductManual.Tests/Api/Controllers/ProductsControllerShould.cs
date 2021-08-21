@@ -63,7 +63,10 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
             const int productId = 3;
             const int pageNumber = 1;
             const int pageSize = 1;   
-    
+            const string productName = "Skate";
+            const string description = "Description";
+            const string imageUrl = "https://example.com/image.png";
+
             "Given we have an environment with Products, Attributes and Configurations"
                 .x(async () =>
                 {
@@ -91,17 +94,24 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                 PageSize = pageSize,
                 ProductId = productId,
                 TotalCount = 4,
+                Name = productName,
+                Description = description,
+                ImageUrl = imageUrl,
                 Attributes = new List<AttributeResponse>
                 {
                     new AttributeResponse
                     {
                         Id = 10,
                         Name = "Deck",
+                        Description = description,
+                        ImageUrl = imageUrl,
                         Configurations = new List<ConfigurationResponse>
                         {
                             new ConfigurationResponse
                             {
                                 Id = 10,
+                                Description = description,
+                                ImageUrl = imageUrl,
                                 Name = "Standard"
                             }
                         }

@@ -9,7 +9,9 @@ namespace Palfinger.ProductManual.Infrastructure.Data.TypeConfiguration
         public void Configure(EntityTypeBuilder<Configuration> builder)
         {
             builder.HasKey(configuration => configuration.Id);
-            builder.Property(configuration => configuration.Name);
+            builder.Property(configuration => configuration.Name).IsRequired();
+            builder.Property(configuration => configuration.Description).IsRequired();
+            builder.Property(configuration => configuration.ImageUrl).IsRequired();
         }
     }
 }   

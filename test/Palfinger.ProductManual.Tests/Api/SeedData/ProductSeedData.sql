@@ -1,64 +1,64 @@
 ﻿--*************************************************************
 --Products
 --*************************************************************
-INSERT INTO main.Product (Name) VALUES ('Bike');
-INSERT INTO main.Product (Name) VALUES ('Car');
-INSERT INTO main.Product (Name) VALUES ('Skate');
+INSERT INTO main.Product (Name,Description,ImageUrl) VALUES ('Bike','Description','https://example.com/image.png');
+INSERT INTO main.Product (Name,Description,ImageUrl) VALUES ('Car','Description','https://example.com/image.png');
+INSERT INTO main.Product (Name,Description,ImageUrl) VALUES ('Skate','Description','https://example.com/image.png');
 
 --*************************************************************
 --Attributes
 --*************************************************************
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Handlebar',1);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Tyre',1);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Gear',1);
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Handlebar',1,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Tyre',1,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Gear',1,'Description','https://example.com/image.png');
 
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Tyre',2);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Door',2);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('GasType',2);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Power',2);
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Tyre',2,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Door',2,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('GasType',2,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Power',2,'Description','https://example.com/image.png');
 
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Wheel',3);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Trucks',3);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Deck',3);
-INSERT INTO main.Attribute (Name,ProductId) VALUES ('Grip tape',3);
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Wheel',3,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Trucks',3,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Deck',3,'Description','https://example.com/image.png');
+INSERT INTO main.Attribute (Name,ProductId,Description,ImageUrl) VALUES ('Grip tape',3,'Description','https://example.com/image.png');
 
 --*************************************************************
 --Configurations
 --*************************************************************
 --Bike
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Long',1);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Short',1);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Medium',1);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Long',1,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Short',1,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Medium',1,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Soft',2);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Medium',2);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Hard',2);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Soft',2,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Medium',2,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Hard',2,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Gear Standard',3);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Gear Standard',3,'Description','https://example.com/image.png');
 
 --Car
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Soft',4);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Medium',4);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Hard',4);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Soft',4,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Medium',4,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Hard',4,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Standard',5);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Five',5);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Standard',5,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Five',5,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Standard',6);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Diesel',6);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Standard',6,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Diesel',6,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('150hp',7);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('200hp',7);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('300hp',7);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('150hp',7,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('200hp',7,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('300hp',7,'Description','https://example.com/image.png');
 
 --Skate
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('70mm',8);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('75mm',8);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('70mm',8,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('75mm',8,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Standard',9);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Precision',9);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Standard',9,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Precision',9,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Standard',10);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Standard',10,'Description','https://example.com/image.png');
 
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Regular',11);
-INSERT INTO main.Configuration (Name,AttributeId) VALUES ('Abrasive',11);
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Regular',11,'Description','https://example.com/image.png');
+INSERT INTO main.Configuration (Name,AttributeId,Description,ImageUrl) VALUES ('Abrasive',11,'Description','https://example.com/image.png');
