@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using LanguageExt;
 using Microsoft.EntityFrameworkCore;
 using Palfinger.ProductManual.Domain.Repositories;
 
@@ -21,17 +23,17 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
             return _context.Set<T>().AsNoTracking();
         }
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public async Task<Option<List<T>>> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return _context.Set<T>().Where(expression).AsNoTracking();
+            return await _context.Set<T>().Where(expression).AsNoTracking().ToListAsync();
+        }
+    
+        public async Task Create(T entity)  
+        {
+            await _context.Set<T>().AddAsync(entity);       
         }
 
-        public async Task Create(T entity)
-        {
-            await _context.Set<T>().AddAsync(entity);
-        }
-
-        public void Update(T entity)    
+        public void Update(T entity)        
         {
             _context.Set<T>().Update(entity);
         }

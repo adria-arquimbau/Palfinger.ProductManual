@@ -4,15 +4,15 @@ namespace Palfinger.ProductManual.Queries.Handlers
 {
     public class GetManualByProductIdQueryRequest : IRequest<GetManualByProductIdQueryResponse>
     {
-        public readonly int RequestProductId;
-        public readonly int RequestPageNumber;
-        public readonly int RequestPageSize;
+        public readonly int ProductId;
+        public readonly int PageNumber;
+        public readonly int PageSize;
 
-        public GetManualByProductIdQueryRequest(int requestProductId, int requestPageNumber, int requestPageSize)
+        public GetManualByProductIdQueryRequest(int productId, int pageNumber, int pageSize)
         {
-            RequestProductId = requestProductId;
-            RequestPageNumber = requestPageNumber;
-            RequestPageSize = requestPageSize;
+            ProductId = productId;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
         }
     }
 }       

@@ -7,19 +7,9 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
     {
         private readonly ProductManualDbContext _context;
         private IAttributeRepository _attributeRepository;
-
-        public IAttributeRepository AttributeRepository
-        {
-            get
-            {
-                if (_attributeRepository == null)
-                {
-                    _attributeRepository = new AttributeRepository(_context);
-                }
-
-                return _attributeRepository;
-            }
-        }
+        private IProductRepository _productRepository;
+        public IAttributeRepository AttributeRepository => _attributeRepository ??= new AttributeRepository(_context);
+        public IProductRepository ProductRepository => _productRepository ??= new ProductRepository(_context);
 
         public RepositoryWrapper(ProductManualDbContext context)
         {

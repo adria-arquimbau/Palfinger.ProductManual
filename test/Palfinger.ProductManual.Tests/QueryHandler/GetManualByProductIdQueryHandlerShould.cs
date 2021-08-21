@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,9 +7,11 @@ using NSubstitute;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Helpers;
 using Palfinger.ProductManual.Domain.Repositories;
+using Palfinger.ProductManual.Queries.Exceptions;
 using Palfinger.ProductManual.Queries.Handlers;
 using Palfinger.ProductManual.Queries.Models;
 using Xunit;
+using Attribute = Palfinger.ProductManual.Domain.Attribute;
 
 namespace Palfinger.ProductManual.Tests.QueryHandler
 {
@@ -259,5 +262,21 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
             response.Should().BeEquivalentTo(expectedResponse, config => config
                 .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
         }
+        
+        [Fact]
+        public async Task ReturnAnErrorIfTheProductDoesNotExists()
+        {
+            const int pageNumber = 1;
+            const int notExistingProduct = 1001;
+            
+            var pagedList = new PagedList<Attribute>(new List<Attribute>(), 0, pageNumber, 0);
+            _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
+
+            
+            var request = new GetManualByProductIdQueryRequest(notExistingProduct,pageNumber,3);
+            Func<Task<GetManualByProductIdQueryResponse>> action = () => _handler.Handle(request, CancellationToken.None);
+
+            await action.Should().ThrowAsync<ProductNotFoundException>();
+        }
     }
-}
+}       
