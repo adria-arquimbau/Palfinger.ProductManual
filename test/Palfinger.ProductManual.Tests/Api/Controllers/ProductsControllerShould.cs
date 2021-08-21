@@ -54,10 +54,14 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
         }
         
         [Scenario]
-        public void GetProductManualWithPagingAttributesByProductId()
+        public void GetAProductManualWithPagingAttributesByProductId()
         {
-            var services = new ServiceCollection();
-            var client = CreateClient(services);    
+            var services = new ServiceCollection(); 
+            var client = CreateClient(services);
+            
+            const int productId = 3;
+            const int pageNumber = 1;
+            const int pageSize = 1;   
     
             "Given we have an environment with Products, Attributes and Configurations"
                 .x(async () =>
@@ -72,32 +76,32 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
             "When called the method"
                 .x(async () =>
                 {
-                    _clientResponse = await client.GetAsync($"api/products?productId=1&pageNumber=1&pageSize=4");
+                    _clientResponse = await client.GetAsync($"api/products?productId={productId}&pageNumber={pageNumber}&pageSize={pageSize}");
                 });
 
             "Then we get an ok response"
                 .x(() => _clientResponse.StatusCode.Should().Be(HttpStatusCode.OK));
 
-            var expectedResponse = new ManualByProductIdPagingResponse
+            var expectedResponse = new 
             {
-                CurrentPage = 1,
+                CurrentPage = pageNumber,
                 HasNext = true,
                 HasPrevious = false,
-                PageSize = 4,
-                ProductId = 1,
-                TotalCount = 3,
+                PageSize = pageSize,
+                ProductId = productId,
+                TotalCount = 4,
                 Attributes = new List<AttributeResponse>
                 {
                     new AttributeResponse
                     {
-                        Id = 1,
-                        Name = "Name",
+                        Id = 10,
+                        Name = "Deck",
                         Configurations = new List<ConfigurationResponse>
                         {
                             new ConfigurationResponse
                             {
-                                Id = 1,
-                                Name = ""
+                                Id = 10,
+                                Name = "Standard"
                             }
                         }
                     }
@@ -109,7 +113,8 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                 {
                     var json = await _clientResponse.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<ManualByProductIdPagingResponse>(json);
-                    result.Should().BeEquivalentTo(expectedResponse);
+                    result.Should().BeEquivalentTo(expectedResponse, config => config
+                        .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
                 });
         }
     }
