@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palfinger.ProductManual.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palfinger.ProductManual.Queries", "src\Palfinger.ProductManual.Queries\Palfinger.ProductManual.Queries.csproj", "{F35FAAE3-C0D9-40CD-BC88-3A3235049C19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palfinger.ProductManual.Domain.Tests", "test\Palfinger.ProductManual.Domain.Tests\Palfinger.ProductManual.Domain.Tests.csproj", "{4A3A11E2-D79E-4B57-9280-B97522CEBE68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{F35FAAE3-C0D9-40CD-BC88-3A3235049C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F35FAAE3-C0D9-40CD-BC88-3A3235049C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F35FAAE3-C0D9-40CD-BC88-3A3235049C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3A11E2-D79E-4B57-9280-B97522CEBE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3A11E2-D79E-4B57-9280-B97522CEBE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3A11E2-D79E-4B57-9280-B97522CEBE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3A11E2-D79E-4B57-9280-B97522CEBE68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
