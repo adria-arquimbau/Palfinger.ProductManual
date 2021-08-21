@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Palfinger.ProductManual.Domain.Commands.CreateProduct;
 using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Infrastructure.Data;
 using Palfinger.ProductManual.Infrastructure.Data.Repositories;
@@ -27,6 +28,7 @@ namespace Palfinger.ProductManual.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(GetManualByProductIdQueryHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(CreateProductCommandHandler).GetTypeInfo().Assembly);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using AutoFixture.Xunit2;
 using FluentAssertions;
 using MediatR;
@@ -34,8 +35,11 @@ namespace Palfinger.ProductManual.Domain.Tests
         }
         
         [Theory, AutoData]
-        public void CreateAProductWithAttributesAndConfigurations(string name, string description, string imageUrl)
+        public async Task CreateAProductWithAttributesAndConfigurations()
         {
+            const string name = "";
+            const string description = "";
+            const string imageUrl = "";
             var request = new CreateProductCommandRequest(name, description, imageUrl, new List<CreateAttributeRequest>
             {
                 new CreateAttributeRequest(name, description, imageUrl, new List<CreateConfigurationRequest>
@@ -44,7 +48,7 @@ namespace Palfinger.ProductManual.Domain.Tests
                 })
             });
             
-            _handler.Handle(request, CancellationToken.None);
+            await _handler.Handle(request, CancellationToken.None);
 
             var product = new Product(name, description, imageUrl);
             var attribute = new Attribute(name, description, imageUrl);
@@ -58,13 +62,13 @@ namespace Palfinger.ProductManual.Domain.Tests
             {
                 attribute
             });
-            _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, product)));
+            await _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, product)));
         }
         
         private bool IsEquivalentTo(object request, object expectedRequest)
         {
             request.Should().BeEquivalentTo(expectedRequest, config => config
-                .Excluding(x => x.SelectedMemberPath.EndsWith("Date"))
+                .Excluding(x => x.SelectedMemberPath.EndsWith("Id"))
                 .IgnoringCyclicReferences());
             return true; 
         }

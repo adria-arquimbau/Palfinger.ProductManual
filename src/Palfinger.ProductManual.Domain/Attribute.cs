@@ -25,7 +25,7 @@ namespace Palfinger.ProductManual.Domain
 
         public void SetConfigurations(List<Configuration> configurations)
         {
-            configurations.AddRange(configurations); 
+            Configurations.AddRange(configurations); 
         }
     }       
 }               

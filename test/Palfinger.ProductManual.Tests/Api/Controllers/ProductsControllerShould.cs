@@ -137,7 +137,7 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
             var services = new ServiceCollection(); 
             var client = CreateClient(services);
 
-            const string productName = "Name";
+            const string productName = "ProductName1";
             var request = new
             {   
                 Name = productName,
@@ -147,14 +147,14 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                 {
                     new
                     {   
-                        Name = "AttributeName", 
+                        Name = "AttributeName1", 
                         Description = "Description",    
                         ImageUrl = "ImageUrl",
                         Configurations = new List<object>    
                         {       
                             new    
                             {       
-                                Name = "ConfigurationName", 
+                                Name = "ConfigurationName1", 
                                 Description = "Description",
                                 ImageUrl = "ImageUrl",  
                             }   
