@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -116,6 +117,34 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
                     result.Should().BeEquivalentTo(expectedResponse, config => config
                         .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
                 });
+        }
+
+        [Scenario]
+        public void CreateAProductWithOneAttributeAndOneConfiguration()
+        {
+            var services = new ServiceCollection(); 
+            var client = CreateClient(services);
+            
+            // var request = new ProductRequest
+            // {
+            //     Name = "Name",
+            //     Attributes = new List<AttributeRequest>
+            //     {
+            //         new AttributeRequest
+            //         {
+            //             Name = 
+            //         }
+            //     }
+            // };
+            
+            "When called the method"
+                .x(async () =>
+                {
+                    //_clientResponse = await client.PostAsync($"api/products", new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+                });
+
+            "Then we get an ok response"
+                .x(() => _clientResponse.StatusCode.Should().Be(HttpStatusCode.OK));
         }
     }
 }           
