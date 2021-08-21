@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -10,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Palfinger.ProductManual.Api;
+using Palfinger.ProductManual.Api.Models;
+using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Queries.Models;
 using Palfinger.ProductManual.Tests.Api.SeedData;
 using Xbehave;
@@ -134,27 +137,60 @@ namespace Palfinger.ProductManual.Tests.Api.Controllers
         {
             var services = new ServiceCollection(); 
             var client = CreateClient(services);
-            
-            // var request = new ProductRequest
-            // {
-            //     Name = "Name",
-            //     Attributes = new List<AttributeRequest>
-            //     {
-            //         new AttributeRequest
-            //         {
-            //             Name = 
-            //         }
-            //     }
-            // };
+
+            const string productName = "Name";
+            var request = new
+            {   
+                Name = productName,
+                Description = "Description",
+                ImageUrl = "ImageUrl",
+                Attributes = new List<object>
+                {
+                    new
+                    {   
+                        Name = "AttributeName", 
+                        Description = "Description",    
+                        ImageUrl = "ImageUrl",
+                        Configurations = new List<object>    
+                        {       
+                            new    
+                            {       
+                                Name = "ConfigurationName", 
+                                Description = "Description",
+                                ImageUrl = "ImageUrl",  
+                            }   
+                        }   
+                    }
+                }
+            };  
             
             "When called the method"
                 .x(async () =>
                 {
-                    //_clientResponse = await client.PostAsync($"api/products", new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+                    _clientResponse = await client.PostAsync($"api/products", new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
                 });
 
             "Then we get an ok response"
                 .x(() => _clientResponse.StatusCode.Should().Be(HttpStatusCode.OK));
+            
+            Product result = null;
+            "And we obtain the desired information"
+                .x(async () =>
+                {
+                    await _factory.ExecuteDbContextAsync(async context =>
+                        result = await context.Product
+                            .Where(p => p.Name == productName)
+                            .Include(p => p.Attributes)
+                                .ThenInclude(a => a.Configurations)
+                            .FirstOrDefaultAsync());
+                });
+
+            var expected = new Product(productName, "Description", "ImageUrl");
+            "Then we match the information"
+                .x(() =>
+                {
+                    result.Should().Be(expected);
+                });
         }
     }
 }           
