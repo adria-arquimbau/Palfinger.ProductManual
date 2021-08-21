@@ -12,7 +12,6 @@ using Xunit;
 
 namespace Palfinger.ProductManual.Tests.QueryHandler
 {
-    [Collection("IntegrationTests")]
     public class GetManualByProductIdQueryHandlerShould
     {
         private readonly GetManualByProductIdQueryHandler _handler;
@@ -54,8 +53,8 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                    PageSize = 3,
                    ProductId = 1,
                    TotalCount = 2,
-                    Attributes = new List<AttributeResponse>
-                    {
+                   Attributes = new List<AttributeResponse>
+                   {
                         new AttributeResponse
                         {
                             Id = 1,
@@ -82,7 +81,34 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                                 }
                             }
                         }
-                    }
+                   }
+                }
+            };
+            
+            response.Should().BeEquivalentTo(expectedResponse, config => config
+                .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
+        }
+        
+         [Fact]
+        public async Task GetAnEmptyListOfAttributesIfTheProductDontHaveAnyAttribute()
+        {
+            var pagedList = new PagedList<Attribute>(new List<Attribute>(), 0, 1, 0);
+            _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
+
+            var request = new GetManualByProductIdQueryRequest(1,1,3);
+            var response = await _handler.Handle(request, CancellationToken.None);
+
+            var expectedResponse = new GetManualByProductIdQueryResponse
+            {
+                ManualByProductIdPagingResponse = new ManualByProductIdPagingResponse
+                {
+                   CurrentPage = 1,
+                   HasNext = false,
+                   HasPrevious = false,
+                   PageSize = 0,
+                   ProductId = 1,
+                   TotalCount = 0,
+                   Attributes = new List<AttributeResponse>()
                 }
             };
             
