@@ -117,18 +117,23 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
         }
         
         [Fact]
-        public async Task GetACompletePagingWith5RequestsForTheSecondPageOnAProductWith10Attributes()
+        public async Task GetACompletePagingWith5RequestsForTheSecondPageOnAProductWith10AttributesAndMultipleConfigurations()
         {
             var attribute1 = new Attribute("Attribute Name 1");
-            attribute1.SetConfiguration(new Configuration("Configuration Name 1"));
+            attribute1.SetConfiguration(new Configuration("Configuration Name 11"));
             var attribute2 = new Attribute("Attribute Name 2");
-            attribute2.SetConfiguration(new Configuration("Configuration Name 2"));
+            attribute2.SetConfiguration(new Configuration("Configuration Name 21")); 
+            attribute2.SetConfiguration(new Configuration("Configuration Name 22"));
+            attribute2.SetConfiguration(new Configuration("Configuration Name 23"));
             var attribute3 = new Attribute("Attribute Name 3");
-            attribute3.SetConfiguration(new Configuration("Configuration Name 3"));
+            attribute3.SetConfiguration(new Configuration("Configuration Name 31"));
+            attribute3.SetConfiguration(new Configuration("Configuration Name 32"));
             var attribute4 = new Attribute("Attribute Name 4");
-            attribute4.SetConfiguration(new Configuration("Configuration Name 4"));
+            attribute4.SetConfiguration(new Configuration("Configuration Name 41"));
+            attribute4.SetConfiguration(new Configuration("Configuration Name 42"));
+            attribute4.SetConfiguration(new Configuration("Configuration Name 43"));
             var attribute5 = new Attribute("Attribute Name 5");
-            attribute5.SetConfiguration(new Configuration("Configuration Name 5"));
+            attribute5.SetConfiguration(new Configuration("Configuration Name 51"));
             
             var attributesList = new List<Attribute>    
             {
@@ -166,7 +171,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                                 new ConfigurationResponse
                                 {
                                     Id = 1,
-                                    Name = "Configuration Name 1"
+                                    Name = "Configuration Name 11"
                                 }
                             }
                         },
@@ -178,8 +183,18 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                             {
                                 new ConfigurationResponse
                                 {
-                                    Id = 2,
-                                    Name = "Configuration Name 2"
+                                    Id = 21,
+                                    Name = "Configuration Name 21"
+                                },
+                                new ConfigurationResponse
+                                {
+                                    Id = 22,
+                                    Name = "Configuration Name 22"
+                                },
+                                new ConfigurationResponse
+                                {
+                                    Id = 23,
+                                    Name = "Configuration Name 23"
                                 }
                             }
                         },
@@ -191,8 +206,13 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                             {
                                 new ConfigurationResponse
                                 {
-                                    Id = 3,
-                                    Name = "Configuration Name 3"
+                                    Id = 31,
+                                    Name = "Configuration Name 31"
+                                },
+                                new ConfigurationResponse
+                                {
+                                    Id = 32,
+                                    Name = "Configuration Name 32"
                                 }
                             }
                         },
@@ -204,9 +224,19 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                             {
                                 new ConfigurationResponse
                                 {
-                                    Id = 2,
-                                    Name = "Configuration Name 4"
-                                }
+                                    Id = 41,
+                                    Name = "Configuration Name 41"
+                                },
+                                new ConfigurationResponse
+                                {
+                                    Id = 42,
+                                    Name = "Configuration Name 42"
+                                },
+                                new ConfigurationResponse
+                                {
+                                    Id = 43,
+                                    Name = "Configuration Name 43"
+                                },
                             }
                         },
                         new AttributeResponse
@@ -217,8 +247,8 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                             {
                                 new ConfigurationResponse
                                 {
-                                    Id = 5,
-                                    Name = "Configuration Name 5"
+                                    Id = 51,
+                                    Name = "Configuration Name 51"
                                 }
                             }
                         }
