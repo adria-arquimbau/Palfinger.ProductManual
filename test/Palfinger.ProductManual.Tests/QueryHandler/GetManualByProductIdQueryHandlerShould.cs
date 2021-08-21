@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
+using LanguageExt;
 using NSubstitute;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Helpers;
@@ -269,9 +270,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
             const int pageNumber = 1;
             const int notExistingProduct = 1001;
             
-            var pagedList = new PagedList<Attribute>(new List<Attribute>(), 0, pageNumber, 0);
-            _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
-
+            _repositoryWrapper.ProductRepository.FindByCondition(product => product.Id == notExistingProduct).Returns(Option<List<Product>>.None);
             
             var request = new GetManualByProductIdQueryRequest(notExistingProduct,pageNumber,3);
             Func<Task<GetManualByProductIdQueryResponse>> action = () => _handler.Handle(request, CancellationToken.None);

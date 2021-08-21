@@ -20,12 +20,8 @@ namespace Palfinger.ProductManual.Queries.Handlers
     
         public async Task<GetManualByProductIdQueryResponse> Handle(GetManualByProductIdQueryRequest request, CancellationToken cancellationToken)
         {
-            var product = await _repositoryWrapper.ProductRepository.FindByCondition(x => x.Id == request.ProductId);
-            if (product.IsNone)
-            {
-                throw new ProductNotFoundException();
-            }
-            
+            await CheckIfTheProductExists(request.ProductId);
+
             var response =  await _repositoryWrapper.AttributeRepository.GetAttributesPaging(new ManualByProductIdFilterRequest
             {
                 ProductId = request.ProductId,
@@ -55,6 +51,15 @@ namespace Palfinger.ProductManual.Queries.Handlers
                     }).ToList()
                 }   
             };
+        }
+
+        private async Task CheckIfTheProductExists(int productId)
+        {
+            var product = await _repositoryWrapper.ProductRepository.FindByCondition(x => x.Id == productId);
+            if (product.IsNone)
+            {
+                throw new ProductNotFoundException();
+            }
         }
     }
 }
