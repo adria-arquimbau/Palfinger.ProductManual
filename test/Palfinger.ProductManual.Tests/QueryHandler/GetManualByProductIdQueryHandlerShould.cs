@@ -38,7 +38,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                 attribute2
             };
 
-            var pagedList = new PagedList<Attribute>(attributesList, 3, 1, 3);
+            var pagedList = new PagedList<Attribute>(attributesList, 2, 1, 3);
             _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
 
             var request = new GetManualByProductIdQueryRequest(1,1,3);
@@ -53,7 +53,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                    HasPrevious = false,
                    PageSize = 3,
                    ProductId = 1,
-                   TotalCount = 3,
+                   TotalCount = 2,
                     Attributes = new List<AttributeResponse>
                     {
                         new AttributeResponse

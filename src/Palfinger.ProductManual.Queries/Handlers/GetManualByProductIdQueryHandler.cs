@@ -25,7 +25,7 @@ namespace Palfinger.ProductManual.Queries.Handlers
                 PageNumber = request.RequestPageNumber,
                 PageSize = request.RequestPageSize
             });
-
+            
             return new GetManualByProductIdQueryResponse
             {
                 ManualByProductIdPagingResponse = new ManualByProductIdPagingResponse
