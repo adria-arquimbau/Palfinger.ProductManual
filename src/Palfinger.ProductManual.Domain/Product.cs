@@ -14,7 +14,12 @@ namespace Palfinger.ProductManual.Domain
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; } 
-        public string ImageUrl { get; private set; }    
-        public List<Attribute> Attributes { get; private set; }
+        public string ImageUrl { get; private set; }
+        public List<Attribute> Attributes { get; private set; } = new List<Attribute>();
+
+        public void SetAttributes(List<Attribute> attributes)
+        {
+            Attributes.AddRange(attributes);
+        }
     }
-}       
+}           
