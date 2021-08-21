@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Palfinger.ProductManual.Api.Models;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Queries.Handlers;
@@ -25,11 +26,11 @@ namespace Palfinger.ProductManual.Api.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ManualByProductIdPagingResponse),(int)HttpStatusCode.OK)]
         [Produces("application/json")]
-        public async Task<ActionResult> GetManualByProductId([FromQuery] int productId, [FromQuery] int pageNumber, [FromQuery] int pageSize)
+        public async Task<ActionResult> GetManualByProductId([FromQuery] GetManualByProductIdRequest request)
         {
-            var response = await _mediator.Send(new GetManualByProductIdQueryRequest(productId, pageNumber, pageSize));
+            var response = await _mediator.Send(new GetManualByProductIdQueryRequest(request.ProductId, request.PageNumber, request.PageSize));
 
             return Ok(response.ManualByProductIdPagingResponse);
-        }   
+        }
     }
 }   

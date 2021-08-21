@@ -21,8 +21,4 @@
       <ProjectReference Include="..\Palfinger.ProductManual.Queries\Palfinger.ProductManual.Queries.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models" />
-    </ItemGroup>
-
 </Project>
