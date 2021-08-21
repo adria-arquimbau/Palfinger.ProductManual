@@ -7,6 +7,6 @@ namespace Palfinger.ProductManual.Api.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public List<AttributeRequest> Attributes { get; set; }
+        public IEnumerable<AttributeRequest> Attributes { get; set; }
     }
 }

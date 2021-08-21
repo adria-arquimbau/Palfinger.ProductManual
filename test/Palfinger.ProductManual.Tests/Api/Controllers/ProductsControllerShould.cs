@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Palfinger.ProductManual.Api;
-using Palfinger.ProductManual.Api.Models;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Queries.Models;
 using Palfinger.ProductManual.Tests.Api.SeedData;
