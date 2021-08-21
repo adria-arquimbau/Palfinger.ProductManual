@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -42,6 +43,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
             };
 
             var pagedList = new PagedList<Attribute>(attributesList, 2, 1, 3);
+            _repositoryWrapper.ProductRepository.FindByCondition(Arg.Any<Expression<Func<Product, bool>>>()).Returns(new List<Product>());
             _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
 
             var request = new GetManualByProductIdQueryRequest(1,1,3);
@@ -97,6 +99,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
         public async Task GetAnEmptyListOfAttributesIfTheProductDontHaveAnyAttribute()
         {
             var pagedList = new PagedList<Attribute>(new List<Attribute>(), 0, 1, 0);
+            _repositoryWrapper.ProductRepository.FindByCondition(Arg.Any<Expression<Func<Product, bool>>>()).Returns(new List<Product>());
             _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
 
             var request = new GetManualByProductIdQueryRequest(1,1,3);
@@ -148,10 +151,14 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                 attribute5
             };
 
+            const int productId = 1;
+
             var pagedList = new PagedList<Attribute>(attributesList, 10, 2, 5);
+            
+            _repositoryWrapper.ProductRepository.FindByCondition(Arg.Any<Expression<Func<Product, bool>>>()).Returns(new List<Product>());
             _repositoryWrapper.AttributeRepository.GetAttributesPaging(Arg.Any<ManualByProductIdFilterRequest>()).Returns(pagedList);
 
-            var request = new GetManualByProductIdQueryRequest(1,2,5);
+            var request = new GetManualByProductIdQueryRequest(productId,2,5);
             var response = await _handler.Handle(request, CancellationToken.None);
 
             var expectedResponse = new GetManualByProductIdQueryResponse
