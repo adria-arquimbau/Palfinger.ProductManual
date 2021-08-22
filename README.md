@@ -1,6 +1,6 @@
 # Palfinger.ProductManual
 
-La solución se encarga de manejar los objectos comunes a Voxel.WAF.InvoiceApprovalFlow.Palladium, Voxel.WAF.InvoiceApprovalFlow.Cron.Palladium y Voxel.WAF.InvoiceLoadCentre.Palladium.
+The solution is responsible for provisioning the product manual with its different configurations from a product Id.
 
 # Index
 - [Requirements](#requirements)
