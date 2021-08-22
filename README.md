@@ -13,7 +13,7 @@ The solution is responsible for provisioning the product manual with its differe
 
 # Assessment resume
 
-- Intro
+## Intro
 Imagine a product that can be configured by several attributes. Some of them are binary
 (e.g.: The product comes with a certain feature or not) and some are multi value (e.g.: You
 can select a certain kind or capacity from a list). One example for such a product could be
@@ -34,20 +34,20 @@ An example of such an application could look like this:
 
 ![ExamplePhoto](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5a80c11d-de0b-48ff-a9f9-c03ee9f5fe4e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210822%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210822T113637Z&X-Amz-Expires=86400&X-Amz-Signature=4a39a1f62e0fb6f11fd44115f8e349a07d87cb20dafe3eec6d8f629f3412ba5e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-- Task
+## Task
 The scope of this task is limited to the backend side of the system described above. Also,
 the content creation like creating new manuals, texts and illustrations are not part of this
 task. Only the REST interface for the frontend and the data structure behind need to be
 covered.
-• Create a SQLite database with tables that represent the user manual and also holds
+- Create a SQLite database with tables that represent the user manual and also holds
 the product configurations.
-• Develop [asp.net](http://asp.net/) core application that reads from this database and provides the
+- Develop [asp.net](http://asp.net/) core application that reads from this database and provides the
 manual with all necessary data to display it on the frontend.
-• The manual can be requested for a specific product number.
-• The manual is always provided in English. Localization is out of scope for this task.
-• The product and therefor also the manual can be configured by at least 3 attributes.
-• The [asp.net](http://asp.net/) core API should also contain some automated tests.
-• The kind of product, attributes and the content can be chosen according to personal
+- The manual can be requested for a specific product number.
+- The manual is always provided in English. Localization is out of scope for this task.
+- The product and therefor also the manual can be configured by at least 3 attributes.
+- The [asp.net](http://asp.net/) core API should also contain some automated tests.
+- The kind of product, attributes and the content can be chosen according to personal
 preferences.
 
 # Requirements
