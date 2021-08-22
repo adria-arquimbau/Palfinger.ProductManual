@@ -59,6 +59,7 @@ In the route: https://localhost:5001/swagger/index.html
 # Requirements
 
 - .Net Core 5.0: https://dotnet.microsoft.com/download/dotnet/5.0
+- Entity Framework Core 5.0.9: https://docs.microsoft.com/en-us/ef/core/get-started/overview/install#get-the-net-core-cli-tools
 - Sqlite 3.36.0: https://www.sqlite.org/index.html
 
 # Database resources
