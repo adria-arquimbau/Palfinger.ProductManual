@@ -12,8 +12,8 @@ La solución se encarga de manejar los objectos comunes a Voxel.WAF.InvoiceAppro
 
 # Requirements
 
--- .Net Core 5.0
--- Sqlite 3.36.0 
+- .Net Core 5.0
+- Sqlite 3.36.0 
 
 # Database resources
 
