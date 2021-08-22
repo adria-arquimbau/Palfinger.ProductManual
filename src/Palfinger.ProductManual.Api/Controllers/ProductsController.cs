@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Palfinger.ProductManual.Api.Models;
 using Palfinger.ProductManual.Domain.Commands.CreateProduct;
 using Palfinger.ProductManual.Domain.Commands.CreateProduct.Models;
-using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Queries.Handlers;
 using Palfinger.ProductManual.Queries.Models;
 
@@ -34,7 +33,7 @@ namespace Palfinger.ProductManual.Api.Controllers
         }
         
         [HttpPost]
-        [ProducesResponseType(typeof(ManualByProductIdPagingResponse),(int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         [Produces("application/json")]
         public async Task<ActionResult> Post([FromBody] ProductRequest request)
         {   
