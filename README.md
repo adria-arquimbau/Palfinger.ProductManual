@@ -4,6 +4,7 @@ The solution is responsible for provisioning the product manual with its differe
 
 # Index
 - [Assessment resume](#assessment-resume)
+- [Swagger](#swagger)
 - [Requirements](#requirements)
 - [Database resources](#database-resources)
 - [Testing](#testing)
@@ -49,6 +50,11 @@ manual with all necessary data to display it on the frontend.
 - The [asp.net](http://asp.net/) core API should also contain some automated tests.
 - The kind of product, attributes and the content can be chosen according to personal
 preferences.
+
+# Swagger
+
+We can run the .api project and access the swagger interface to see the endpoints available for consumption.
+In the route: https://localhost:5001/swagger/index.html
 
 # Requirements
 
