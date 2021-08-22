@@ -1,4 +1,4 @@
-namespace Palfinger.ProductManual.Domain
+namespace Palfinger.ProductManual.Domain.Helpers
 {
     public class ManualByProductIdFilterRequest
     {

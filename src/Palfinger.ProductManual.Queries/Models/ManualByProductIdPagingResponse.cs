@@ -13,6 +13,8 @@ namespace Palfinger.ProductManual.Queries.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public int TotalPages { get; set; }
         public List<AttributeResponse> Attributes { get; set; }
+        
     }
 }

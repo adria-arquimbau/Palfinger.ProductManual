@@ -19,7 +19,7 @@ namespace Palfinger.ProductManual.Domain.Helpers
             TotalCount = count;
             PageSize = pageSize;
             CurrentPage = pageNumber;
-            TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            TotalPages = count > 0 ? (int)Math.Ceiling(count / (double)pageSize) : 0;
             
             AddRange(items);
         }

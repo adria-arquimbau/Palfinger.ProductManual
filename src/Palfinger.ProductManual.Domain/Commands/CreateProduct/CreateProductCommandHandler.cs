@@ -29,14 +29,14 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
             await _repositoryWrapper.Save();
         }
 
-        private static Product SetAttributesToTheNewProduct(CreateProductCommandRequest request, List<Attribute> attributes)
+        private Product SetAttributesToTheNewProduct(CreateProductCommandRequest request, List<Attribute> attributes)
         {
             var product = new Product(request.Name, request.Description, request.ImageUrl);
             product.SetAttributes(attributes);
             return product;
         }
 
-        private static void CreateAttributesWithOwnConfigurations(List<CreateAttributeRequest> request, List<Attribute> attributes)
+        private void CreateAttributesWithOwnConfigurations(List<CreateAttributeRequest> request, List<Attribute> attributes)
         {
             foreach (var attribute in request)
             {

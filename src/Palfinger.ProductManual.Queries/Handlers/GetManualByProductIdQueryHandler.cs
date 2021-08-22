@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -6,6 +5,7 @@ using System.Threading.Tasks;
 using LanguageExt;
 using MediatR;
 using Palfinger.ProductManual.Domain;
+using Palfinger.ProductManual.Domain.Helpers;
 using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Queries.Exceptions;
 using Palfinger.ProductManual.Queries.Models;
@@ -24,6 +24,7 @@ namespace Palfinger.ProductManual.Queries.Handlers
         public async Task<GetManualByProductIdQueryResponse> Handle(GetManualByProductIdQueryRequest request, CancellationToken cancellationToken)
         {
             var product = await RetrieveProduct(request.ProductId);
+            
             return await product.Match(async p =>
             {
                 var response =  await _repositoryWrapper.AttributeRepository.GetAttributesPaging(new ManualByProductIdFilterRequest
@@ -39,6 +40,7 @@ namespace Palfinger.ProductManual.Queries.Handlers
                     {
                         ProductId = request.ProductId,
                         TotalCount = response.TotalCount,
+                        TotalPages = response.TotalPages,
                         PageSize = response.PageSize, 
                         CurrentPage = response.CurrentPage,
                         HasNext = response.HasNext, 
