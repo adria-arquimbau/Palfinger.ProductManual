@@ -35,35 +35,32 @@ namespace Palfinger.ProductManual.Domain.Tests
             await _repositoryWrapper.Received(1).Save();
         }
         
-        [Fact]
-        public async Task CreateAProductWithAttributesAndConfigurations()
+        [Theory, AutoData]
+        public async Task CreateAProductWithAttributesAndConfigurations(string name, string description, string imageUrl)
         {
-            const string name = "";
-            const string description = "";
-            const string imageUrl = "";
             var request = new CreateProductCommandRequest(name, description, imageUrl, new List<CreateAttributeRequest>
             {
                 new CreateAttributeRequest(name, description, imageUrl, new List<CreateConfigurationRequest>
                 {
-                    new CreateConfigurationRequest(name, description, description)
+                    new CreateConfigurationRequest(name, description, imageUrl)
                 })
             });
+            var expectedProduct = new Product(name, description, imageUrl);
+            var expectedAttribute = new Attribute(name, description, imageUrl);
+            var expectedConfiguration = new Configuration(name, description, imageUrl);
             
+            expectedAttribute.SetConfigurations(new List<Configuration>
+            {   
+                expectedConfiguration
+            }); 
+            expectedProduct.SetAttributes(new List<Attribute>
+            {
+                expectedAttribute
+            });
             await _handler.Handle(request, CancellationToken.None);
 
-            var product = new Product(name, description, imageUrl);
-            var attribute = new Attribute(name, description, imageUrl);
-            var configuration = new Configuration(name, description, imageUrl);
-            
-            attribute.SetConfigurations(new List<Configuration>
-            {
-                configuration
-            });
-            product.SetAttributes(new List<Attribute>
-            {
-                attribute
-            });
-            await _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, product)));
+           
+            await _repositoryWrapper.ProductRepository.Received(1).Create(Arg.Is<Product>(p => IsEquivalentTo(p, expectedProduct)));
             await _repositoryWrapper.Received(1).Save();
         }
         
