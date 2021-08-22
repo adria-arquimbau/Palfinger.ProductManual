@@ -10,7 +10,7 @@ using Palfinger.ProductManual.Domain.Commands.CreateProduct.Models;
 using Palfinger.ProductManual.Domain.Repositories;
 using Xunit;
 
-namespace Palfinger.ProductManual.Domain.Tests
+namespace Palfinger.ProductManual.Domain.Tests.Commands
 {
     public class CreateProductCommandHandlerShould
     {
