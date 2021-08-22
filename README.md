@@ -58,12 +58,12 @@ In the route: https://localhost:5001/swagger/index.html
 
 # Requirements
 
-- .Net Core 5.0
-- Sqlite 3.36.0 
+- .Net Core 5.0: https://dotnet.microsoft.com/download/dotnet/5.0
+- Sqlite 3.36.0: https://www.sqlite.org/index.html
 
 # Database resources
 
-Sqlite Data Base installed on path: C:\sqlite\sqlite-tools\productManual.db
+Sqlite Data Base on path: C:\sqlite\sqlite-tools\productManual.db
 
 # Testing
 
