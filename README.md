@@ -58,12 +58,13 @@ In the route: https://localhost:5001/swagger/index.html
 
 # Requirements
 
-- .Net Core 5.0
-- Sqlite 3.36.0 
+- .Net Core 5.0: https://dotnet.microsoft.com/download/dotnet/5.0
+- Entity Framework Core 5.0.9: https://docs.microsoft.com/en-us/ef/core/get-started/overview/install#get-the-net-core-cli-tools
+- Sqlite 3.36.0: https://www.sqlite.org/index.html
 
 # Database resources
 
-Sqlite Data Base installed on path: C:\sqlite\sqlite-tools\productManual.db
+Sqlite Data Base on path: C:\sqlite\sqlite-tools\productManual.db
 
 # Testing
 
@@ -96,4 +97,3 @@ To run a database update you can use the vscode. All instructions must be execut
 - NSubstitute: https://www.nuget.org/packages/NSubstitute
 - XBehave: https://www.nuget.org/packages/Xbehave
 - xunit: https://www.nuget.org/packages/xunit
-  
