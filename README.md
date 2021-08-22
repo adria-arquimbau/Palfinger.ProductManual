@@ -35,7 +35,7 @@ To run the tests locally, the environment variable ASPNETCORE_ENVIRONMENT must b
   - Attribute: hace referencia a los establecimientos del cliente.
   - Configuration: agrupa un flujo de trabajo para un conjunto de establecimientos, por ejemplo: el flujo de aprobación de facturas de Palladium.
   
-Data Model: https://github.com/adria-arquimbau/Palfinger.ProductManual/blob/develop/productManual.png
+Data Model: ![DataModel](https://github.com/adria-arquimbau/Palfinger.ProductManual/blob/develop/productManual.png)
 
 # Migrations
 Todo el modelo de datos está realizado con entity framework. Este modelo de datos se va ir haciendo de modo incremental. Está ubicado dentro del proyecto Voxel.WAF.InvoiceCommon.Palladium.Infrastructure.Data. En Migrations\ProductionsScripts están todos los scripts que van a ser ejecutados en producción, estos hacen referencia a cada migración; por lo cual cuando creamos una migración debemos crear el script correspondiente para producción.
