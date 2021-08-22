@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Palfinger.ProductManual.Domain.Commands.CreateProduct.Models;
 using Palfinger.ProductManual.Domain.Repositories;
 
 namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
@@ -17,26 +19,35 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
 
         protected override async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            var product = new Product(request.Name, request.Description, request.ImageUrl);
-            
             var attributes = new List<Attribute>();
-            foreach (var attribute in request.Attributes)
-            {
-                var configurations = new List<Configuration>();
-                
-                foreach (var configuration in attribute.Configurations)
-                {
-                    configurations.Add(new Configuration(configuration.Name, configuration.Description, configuration.ImageUrl));        
-                }
-                var newAttribute = new Attribute(attribute.Name, attribute.Description, attribute.ImageUrl);
-                newAttribute.SetConfigurations(configurations);
-                attributes.Add(newAttribute);
-            }
             
-            product.SetAttributes(attributes);
+            CreateAttributesWithOwnConfigurations(request.Attributes, attributes);
+            
+            var product = SetAttributesToTheNewProduct(request, attributes);
 
             await _repositoryWrapper.ProductRepository.Create(product);
             await _repositoryWrapper.Save();
+        }
+
+        private static Product SetAttributesToTheNewProduct(CreateProductCommandRequest request, List<Attribute> attributes)
+        {
+            var product = new Product(request.Name, request.Description, request.ImageUrl);
+            product.SetAttributes(attributes);
+            return product;
+        }
+
+        private static void CreateAttributesWithOwnConfigurations(List<CreateAttributeRequest> request, List<Attribute> attributes)
+        {
+            foreach (var attribute in request)
+            {
+                var configurations = attribute.Configurations.Select(configuration => 
+                    new Configuration(configuration.Name, configuration.Description, configuration.ImageUrl)).ToList();
+
+                var newAttribute = new Attribute(attribute.Name, attribute.Description, attribute.ImageUrl);
+                
+                newAttribute.SetConfigurations(configurations);
+                attributes.Add(newAttribute);
+            }   
         }
     }
 }   
