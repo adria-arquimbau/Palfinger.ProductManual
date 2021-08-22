@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Palfinger.ProductManual.Queries.Models;
 
 namespace Palfinger.ProductManual.Queries.Handlers

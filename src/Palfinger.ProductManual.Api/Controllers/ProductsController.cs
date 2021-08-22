@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Palfinger.ProductManual.Api.Models;
 using Palfinger.ProductManual.Domain.Commands.CreateProduct;
 using Palfinger.ProductManual.Domain.Commands.CreateProduct.Models;
+using Palfinger.ProductManual.Domain.Repositories;
 using Palfinger.ProductManual.Queries.Handlers;
 using Palfinger.ProductManual.Queries.Models;
 
@@ -16,6 +17,7 @@ namespace Palfinger.ProductManual.Api.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;
+
         public ProductsController(IMediator mediator)
         {
             _mediator = mediator;
