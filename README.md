@@ -82,3 +82,12 @@ To run a database update you can use the vscode. All instructions must be execut
 
 # Nugets
 
+- FluentAssertions: https://www.nuget.org/packages/FluentAssertions
+- LanguageExt.Core: https://www.nuget.org/packages/LanguageExt.Core
+- Newtonsoft.Json: https://www.nuget.org/packages/Newtonsoft.Json
+- AutoFixture.Xunit2: https://www.nuget.org/packages/AutoFixture.Xunit2
+- MediatR: https://www.nuget.org/packages/MediatR
+- NSubstitute: https://www.nuget.org/packages/NSubstitute
+- XBehave: https://www.nuget.org/packages/Xbehave
+- xunit: https://www.nuget.org/packages/xunit
+  
