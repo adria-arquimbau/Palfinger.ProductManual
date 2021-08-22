@@ -8,10 +8,12 @@ La solución se encarga de manejar los objectos comunes a Voxel.WAF.InvoiceAppro
 - [Testing](#testing)
 - [Common Objects](#common-objects)
 - [Migrations](#migrations)
+- [Nugets](#nugets)
 
 # Requirements
 
-.Net Core 5.0
+-- .Net Core 5.0
+-- Sqlite 3.36.0 
 
 # Database resources
 
@@ -37,3 +39,6 @@ To run a database update you can use the vscode. All instructions must be execut
 ```
    dotnet ef database update  -s ../Palfinger.ProductManual.Api/
 ```
+
+# Nugets
+
