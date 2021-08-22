@@ -32,7 +32,7 @@ public CDN.
 The user manual web frontend consumes a REST API.
 An example of such an application could look like this:
 
-![ExamplePhoto](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a80c11d-de0b-48ff-a9f9-c03ee9f5fe4e/Untitled.png)
+![ExamplePhoto](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5a80c11d-de0b-48ff-a9f9-c03ee9f5fe4e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210822%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210822T113637Z&X-Amz-Expires=86400&X-Amz-Signature=4a39a1f62e0fb6f11fd44115f8e349a07d87cb20dafe3eec6d8f629f3412ba5e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 - Task
 The scope of this task is limited to the backend side of the system described above. Also,
