@@ -35,7 +35,7 @@ namespace Palfinger.ProductManual.Api
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Palfinger.ProductManual.Api", Version = "v1"});
             });
             services.AddDbContext<ProductManualDbContext>(options =>
-            {//TODO test sin migration hsitory table si crea tabla migraciones igual
+            {
                 options.UseSqlite(Configuration.GetConnectionString("DBConnection"), 
                     b => b.MigrationsHistoryTable("__EFMigrationsHistory"));
             });

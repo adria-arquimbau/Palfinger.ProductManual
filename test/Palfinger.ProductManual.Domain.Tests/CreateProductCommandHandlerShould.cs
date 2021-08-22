@@ -35,7 +35,7 @@ namespace Palfinger.ProductManual.Domain.Tests
             await _repositoryWrapper.Received(1).Save();
         }
         
-        [Theory, AutoData]
+        [Fact]
         public async Task CreateAProductWithAttributesAndConfigurations()
         {
             const string name = "";

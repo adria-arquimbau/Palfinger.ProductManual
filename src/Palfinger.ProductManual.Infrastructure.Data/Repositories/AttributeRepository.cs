@@ -15,7 +15,7 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
 
         public async Task<PagedList<Attribute>> GetAttributesPaging(ManualByProductIdFilterRequest manualByProductIdFilterRequest)
         {   
-            return  PagedList<Attribute>.ToPagedList(FindALl()
+            return  PagedList<Attribute>.ToPagedList(FindAll()
                     .Where(attribute => attribute.Product.Id == manualByProductIdFilterRequest.ProductId)
                     .OrderBy(attribute => attribute.Name)
                     .Include(attribute => attribute.Configurations), manualByProductIdFilterRequest.PageNumber, manualByProductIdFilterRequest.PageSize);

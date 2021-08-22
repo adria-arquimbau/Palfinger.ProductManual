@@ -9,9 +9,9 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
         public readonly string Name;
         public readonly string Description;
         public readonly string ImageUrl;
-        public readonly IEnumerable<CreateAttributeRequest> Attributes;
+        public readonly List<CreateAttributeRequest> Attributes;
 
-        public CreateProductCommandRequest(string name, string description, string imageUrl, IEnumerable<CreateAttributeRequest> attributes)
+        public CreateProductCommandRequest(string name, string description, string imageUrl, List<CreateAttributeRequest> attributes)
         {
             Name = name;
             Description = description;

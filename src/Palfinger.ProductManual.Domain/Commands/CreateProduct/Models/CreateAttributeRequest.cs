@@ -7,9 +7,9 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct.Models
         public string Name { get; }
         public string Description { get; }
         public string ImageUrl { get; }
-        public IEnumerable<CreateConfigurationRequest> Configurations { get; }
+        public List<CreateConfigurationRequest> Configurations { get; }
 
-        public CreateAttributeRequest(string name, string description, string imageUrl, IEnumerable<CreateConfigurationRequest> configurations)
+        public CreateAttributeRequest(string name, string description, string imageUrl, List<CreateConfigurationRequest> configurations)
         {
             Name = name;
             Description = description;

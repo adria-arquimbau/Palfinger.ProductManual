@@ -38,7 +38,7 @@ namespace Palfinger.ProductManual.Api.Controllers
         {   
             await _mediator.Send(new CreateProductCommandRequest(request.Name, request.Description, request.ImageUrl, 
                 request.Attributes.Select(a =>  new CreateAttributeRequest(a.Name, a.Description, a.ImageUrl, 
-                    a.Configurations.Select(c => new CreateConfigurationRequest(c.Name, c.Description, c.ImageUrl))))));
+                    a.Configurations.Select(c => new CreateConfigurationRequest(c.Name, c.Description, c.ImageUrl)).ToList())).ToList()));
 
             return Ok();
         }

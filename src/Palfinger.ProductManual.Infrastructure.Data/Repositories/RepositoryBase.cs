@@ -15,17 +15,17 @@ namespace Palfinger.ProductManual.Infrastructure.Data.Repositories
 
         public RepositoryBase(ProductManualDbContext context)
         {
-            _context = context;
+            _context = context; 
         }
 
-        public IQueryable<T> FindALl()
-        {
-            return _context.Set<T>().AsNoTracking();
+        public IQueryable<T> FindAll()  
+        {   
+            return _context.Set<T>();
         }
-
+    
         public async Task<Option<List<T>>> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return await _context.Set<T>().Where(expression).AsNoTracking().ToListAsync();
+            return await _context.Set<T>().Where(expression).ToListAsync();
         }
     
         public async Task Create(T entity)  
