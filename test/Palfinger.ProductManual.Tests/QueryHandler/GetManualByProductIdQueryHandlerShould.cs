@@ -33,6 +33,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
         {
             var attribute1 = new Attribute("Attribute Name 1", "Description", "ImageUrl");
             attribute1.SetConfiguration(new Configuration("Configuration Name 1", "Description", "ImageUrl"));
+            
             var attribute2 = new Attribute("Attribute Name 2", "Description", "ImageUrl");
             attribute2.SetConfiguration(new Configuration("Configuration Name 2", "Description", "ImageUrl"));
             
@@ -142,30 +143,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
         [Fact]
         public async Task GetACompletePagingWith5RequestsForTheSecondPageOnAProductWith10AttributesAndMultipleConfigurations()
         {
-            var attribute1 = new Attribute("Attribute Name 1", "Description", "ImageUrl");
-            attribute1.SetConfiguration(new Configuration("Configuration Name 11", "Description", "ImageUrl"));
-            var attribute2 = new Attribute("Attribute Name 2", "Description", "ImageUrl");
-            attribute2.SetConfiguration(new Configuration("Configuration Name 21", "Description", "ImageUrl")); 
-            attribute2.SetConfiguration(new Configuration("Configuration Name 22", "Description", "ImageUrl"));
-            attribute2.SetConfiguration(new Configuration("Configuration Name 23", "Description", "ImageUrl"));
-            var attribute3 = new Attribute("Attribute Name 3", "Description", "ImageUrl");
-            attribute3.SetConfiguration(new Configuration("Configuration Name 31", "Description", "ImageUrl"));
-            attribute3.SetConfiguration(new Configuration("Configuration Name 32", "Description", "ImageUrl"));
-            var attribute4 = new Attribute("Attribute Name 4", "Description", "ImageUrl");
-            attribute4.SetConfiguration(new Configuration("Configuration Name 41", "Description", "ImageUrl"));
-            attribute4.SetConfiguration(new Configuration("Configuration Name 42", "Description", "ImageUrl"));
-            attribute4.SetConfiguration(new Configuration("Configuration Name 43", "Description", "ImageUrl"));
-            var attribute5 = new Attribute("Attribute Name 5", "Description", "ImageUrl");
-            attribute5.SetConfiguration(new Configuration("Configuration Name 51", "Description", "ImageUrl"));
-            
-            var attributesList = new List<Attribute>    
-            {
-                attribute1,
-                attribute2,
-                attribute3,
-                attribute4,
-                attribute5
-            };
+            var attributesList = CreateAndConfigureAttributes();
 
             const int productId = 1;
 
@@ -177,22 +155,44 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
             var request = new GetManualByProductIdQueryRequest(productId,2,5);
             var response = await _handler.Handle(request, CancellationToken.None);
 
+            var expectedResponse = CreateExpectedResponse();
+            
+            response.Should().BeEquivalentTo(expectedResponse, config => config
+                .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
+        }
+
+        [Fact]
+        public async Task ReturnAnErrorIfTheProductDoesNotExists()
+        {
+            const int pageNumber = 1;
+            const int notExistingProduct = 1001;
+            
+            _repositoryWrapper.ProductRepository.FindByCondition(product => product.Id == notExistingProduct).Returns(Option<List<Product>>.None);
+            
+            var request = new GetManualByProductIdQueryRequest(notExistingProduct,pageNumber,3);
+            Func<Task<GetManualByProductIdQueryResponse>> action = () => _handler.Handle(request, CancellationToken.None);
+
+            await action.Should().ThrowAsync<ProductNotFoundException>();
+        }
+        
+        private GetManualByProductIdQueryResponse CreateExpectedResponse()
+        {
             var expectedResponse = new GetManualByProductIdQueryResponse
             {
                 ManualByProductIdPagingResponse = new ManualByProductIdPagingResponse
                 {
-                   CurrentPage = 2,
-                   HasNext = false,
-                   HasPrevious = true,
-                   TotalPages = 2,
-                   PageSize = 5,
-                   ProductId = 1,
-                   TotalCount = 10,
-                   Description = "Description",
-                   ImageUrl = "ImageUrl",
-                   Name = "Name",
-                   Attributes = new List<AttributeResponse>
-                   {
+                    CurrentPage = 2,
+                    HasNext = false,
+                    HasPrevious = true,
+                    TotalPages = 2,
+                    PageSize = 5,
+                    ProductId = 1,
+                    TotalCount = 10,
+                    Description = "Description",
+                    ImageUrl = "ImageUrl",
+                    Name = "Name",
+                    Attributes = new List<AttributeResponse>
+                    {
                         new AttributeResponse
                         {
                             Id = 1,
@@ -313,26 +313,39 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
                                 }
                             }
                         }
-                   }
+                    }
                 }
             };
-            
-            response.Should().BeEquivalentTo(expectedResponse, config => config
-                .Excluding(x => x.SelectedMemberPath.EndsWith("Id")));
+            return expectedResponse;
         }
-        
-        [Fact]
-        public async Task ReturnAnErrorIfTheProductDoesNotExists()
-        {
-            const int pageNumber = 1;
-            const int notExistingProduct = 1001;
-            
-            _repositoryWrapper.ProductRepository.FindByCondition(product => product.Id == notExistingProduct).Returns(Option<List<Product>>.None);
-            
-            var request = new GetManualByProductIdQueryRequest(notExistingProduct,pageNumber,3);
-            Func<Task<GetManualByProductIdQueryResponse>> action = () => _handler.Handle(request, CancellationToken.None);
 
-            await action.Should().ThrowAsync<ProductNotFoundException>();
+        private List<Attribute> CreateAndConfigureAttributes()
+        {
+            var attribute1 = new Attribute("Attribute Name 1", "Description", "ImageUrl");
+            attribute1.SetConfiguration(new Configuration("Configuration Name 11", "Description", "ImageUrl"));
+            var attribute2 = new Attribute("Attribute Name 2", "Description", "ImageUrl");
+            attribute2.SetConfiguration(new Configuration("Configuration Name 21", "Description", "ImageUrl"));
+            attribute2.SetConfiguration(new Configuration("Configuration Name 22", "Description", "ImageUrl"));
+            attribute2.SetConfiguration(new Configuration("Configuration Name 23", "Description", "ImageUrl"));
+            var attribute3 = new Attribute("Attribute Name 3", "Description", "ImageUrl");
+            attribute3.SetConfiguration(new Configuration("Configuration Name 31", "Description", "ImageUrl"));
+            attribute3.SetConfiguration(new Configuration("Configuration Name 32", "Description", "ImageUrl"));
+            var attribute4 = new Attribute("Attribute Name 4", "Description", "ImageUrl");
+            attribute4.SetConfiguration(new Configuration("Configuration Name 41", "Description", "ImageUrl"));
+            attribute4.SetConfiguration(new Configuration("Configuration Name 42", "Description", "ImageUrl"));
+            attribute4.SetConfiguration(new Configuration("Configuration Name 43", "Description", "ImageUrl"));
+            var attribute5 = new Attribute("Attribute Name 5", "Description", "ImageUrl");
+            attribute5.SetConfiguration(new Configuration("Configuration Name 51", "Description", "ImageUrl"));
+
+            var attributesList = new List<Attribute>
+            {
+                attribute1,
+                attribute2,
+                attribute3,
+                attribute4,
+                attribute5
+            };
+            return attributesList;
         }
     }
 }       
