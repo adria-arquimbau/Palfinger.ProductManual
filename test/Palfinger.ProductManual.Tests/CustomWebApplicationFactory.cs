@@ -50,7 +50,7 @@ namespace Palfinger.ProductManual.Tests
             });
         }
 
-        public async Task ExecuteScopeAsync(Func<IServiceProvider, Task> action)
+        private async Task ExecuteScopeAsync(Func<IServiceProvider, Task> action)
         {
             using (var scope = Services.GetService<IServiceScopeFactory>().CreateScope())
             {
