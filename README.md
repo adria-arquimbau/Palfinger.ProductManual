@@ -96,4 +96,3 @@ To run a database update you can use the vscode. All instructions must be execut
 - NSubstitute: https://www.nuget.org/packages/NSubstitute
 - XBehave: https://www.nuget.org/packages/Xbehave
 - xunit: https://www.nuget.org/packages/xunit
-  
