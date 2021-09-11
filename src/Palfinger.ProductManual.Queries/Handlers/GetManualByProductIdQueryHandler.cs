@@ -67,9 +67,6 @@ namespace Palfinger.ProductManual.Queries.Handlers
             }, () => throw new ProductNotFoundException());
         }
 
-        private async Task<Option<List<Product>>> RetrieveProduct(int productId)
-        {
-            return  await _repositoryWrapper.ProductRepository.FindByCondition(x => x.Id == productId);
-        }
+        private async Task<Option<List<Product>>> RetrieveProduct(int productId) => await _repositoryWrapper.ProductRepository.FindByCondition(x => x.Id == productId);
     }
 }
