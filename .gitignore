@@ -354,6 +354,7 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio
 /.idea/.idea.Voxel.WAF.InvoiceCommon.Palladium/.idea/encodings.xml
+/.idea/.idea.Voxel.WAF.InvoiceCommon.Palladium/.idea/workspace.xml
 /.idea/.idea.Voxel.WAF.InvoiceCommon.Palladium/.idea/riderModule.iml
 /.idea/.idea.Voxel.WAF.InvoiceCommon.Palladium/.idea/vcs.xml
 /.idea/.idea.Voxel.WAF.InvoiceCommon.Palladium/.idea/indexLayout.xml
