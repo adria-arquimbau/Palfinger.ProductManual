@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -24,9 +25,11 @@ namespace Palfinger.ProductManual.Queries.Handlers
         public async Task<GetManualByProductIdQueryResponse> Handle(GetManualByProductIdQueryRequest request, CancellationToken cancellationToken)
         {
             var product = await RetrieveProduct(request.ProductId);
-            
+
             return await product.Match(async p =>
             {
+                if (p.Count == 0) throw new ProductNotFoundException();
+                
                 var response =  await _repositoryWrapper.AttributeRepository.GetAttributesPaging(new ManualByProductIdFilterRequest
                 {
                     ProductId = request.ProductId,
@@ -64,7 +67,7 @@ namespace Palfinger.ProductManual.Queries.Handlers
                         }).ToList()
                     }   
                 };
-            }, () => throw new ProductNotFoundException());
+            }, () =>  throw new NotImplementedException());
         }
 
         private async Task<Option<List<Product>>> RetrieveProduct(int productId) => await _repositoryWrapper.ProductRepository.FindByCondition(x => x.Id == productId);

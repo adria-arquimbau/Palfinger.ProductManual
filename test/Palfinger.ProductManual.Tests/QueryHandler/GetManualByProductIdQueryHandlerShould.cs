@@ -167,7 +167,7 @@ namespace Palfinger.ProductManual.Tests.QueryHandler
             const int pageNumber = 1;
             const int notExistingProduct = 1001;
             
-            _repositoryWrapper.ProductRepository.FindByCondition(product => product.Id == notExistingProduct).Returns(Option<List<Product>>.None);
+            _repositoryWrapper.ProductRepository.FindByCondition(Arg.Any<Expression<Func<Product, bool>>>()).Returns(Option<List<Product>>.Some(new List<Product>()));
             
             var request = new GetManualByProductIdQueryRequest(notExistingProduct,pageNumber,3);
             Func<Task<GetManualByProductIdQueryResponse>> action = () => _handler.Handle(request, CancellationToken.None);
