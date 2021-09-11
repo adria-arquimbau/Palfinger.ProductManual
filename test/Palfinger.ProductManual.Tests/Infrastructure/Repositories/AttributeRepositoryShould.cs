@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoFixture.Xunit2;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
 using Palfinger.ProductManual.Domain;
 using Palfinger.ProductManual.Domain.Helpers;
 using Palfinger.ProductManual.Domain.Repositories;
