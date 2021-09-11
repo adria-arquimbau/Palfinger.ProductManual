@@ -23,9 +23,9 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
             
             CreateAttributesWithOwnConfigurations(request.Attributes, attributes);
             
-            var product = SetAttributesToTheNewProduct(request, attributes);
+            var productWithAttributes = SetAttributesToTheNewProduct(request, attributes);
 
-            await _repositoryWrapper.ProductRepository.Create(product);
+            await _repositoryWrapper.ProductRepository.Create(productWithAttributes);
             await _repositoryWrapper.Save();
         }
 
