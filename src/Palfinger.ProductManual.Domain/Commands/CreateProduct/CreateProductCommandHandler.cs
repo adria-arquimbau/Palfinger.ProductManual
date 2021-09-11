@@ -20,9 +20,7 @@ namespace Palfinger.ProductManual.Domain.Commands.CreateProduct
         protected override async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
             var attributes = new List<Attribute>();
-            
             CreateAttributesWithOwnConfigurations(request.Attributes, attributes);
-            
             var productWithAttributes = SetAttributesToTheNewProduct(request, attributes);
 
             await _repositoryWrapper.ProductRepository.Create(productWithAttributes);
